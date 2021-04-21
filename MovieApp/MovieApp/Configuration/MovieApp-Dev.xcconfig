@@ -1,0 +1,16 @@
+//
+//  MovieApp-Dev.xcconfig
+//  MovieApp
+//
+//  Created by Vishmita Shetty on 20/04/21.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+//Configuration for dev
+
+SERVER_END_POINT = api.themoviedb.org
+API_KEY = fc02d275df59dbf73d1cde2629ccfdb1
+API_VERSION = 3
+
