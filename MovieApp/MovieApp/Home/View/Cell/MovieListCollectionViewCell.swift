@@ -22,6 +22,12 @@ class MovieListCollectionViewCell: UICollectionViewCell {
     func configureCell(_ movie: Movie?) {
         movieTitle.text = movie?.title ?? ""
         movieReleaseDate.text = movie?.releaseDate ?? ""
+        if let posterPath = movie?.posterPath {
+            let imageUrl = "https://image.tmdb.org/t/p/w500" + "\(posterPath)"
+            posterImage.setCornerRadius()
+            posterImage.loadImage(with: imageUrl)
+        }
+       
     }
 
 }

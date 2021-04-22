@@ -17,7 +17,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="227" height="255"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="moviePlaceHolder" translatesAutoresizingMaskIntoConstraints="NO" id="7mO-t0-PAw">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7mO-t0-PAw">
                         <rect key="frame" x="0.0" y="0.0" width="227" height="128"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="128" id="4l0-NQ-PeB"/>
@@ -75,7 +75,6 @@
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="moviePlaceHolder" width="96" height="96"/>
         <systemColor name="systemGray2Color">
             <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
