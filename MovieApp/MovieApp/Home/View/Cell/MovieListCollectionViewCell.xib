@@ -11,35 +11,35 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MovieListCollectionViewCell" id="gTV-IL-0wX" customClass="MovieListCollectionViewCell" customModule="MovieApp" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="227" height="255"/>
+            <rect key="frame" x="0.0" y="0.0" width="227" height="332"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="227" height="255"/>
+                <rect key="frame" x="0.0" y="0.0" width="227" height="332"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7mO-t0-PAw">
-                        <rect key="frame" x="0.0" y="0.0" width="227" height="128"/>
+                        <rect key="frame" x="0.0" y="0.0" width="227" height="235"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="128" id="4l0-NQ-PeB"/>
+                            <constraint firstAttribute="height" constant="235" id="BwI-86-Fkg"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gCb-nc-wra">
-                        <rect key="frame" x="10" y="138" width="207" height="31"/>
+                        <rect key="frame" x="10" y="245" width="207" height="21"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="31" id="hLE-Kj-rFF"/>
+                            <constraint firstAttribute="height" constant="21" id="hLE-Kj-rFF"/>
                         </constraints>
-                        <fontDescription key="fontDescription" name="KhmerSangamMN" family="Khmer Sangam MN" pointSize="15"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FYU-yV-YP6">
-                        <rect key="frame" x="10" y="174" width="207" height="26"/>
-                        <fontDescription key="fontDescription" name="KhmerSangamMN" family="Khmer Sangam MN" pointSize="12"/>
+                        <rect key="frame" x="10" y="271" width="207" height="14"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                         <color key="textColor" systemColor="systemGray2Color"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lmL-rL-WIj">
-                        <rect key="frame" x="83.5" y="210" width="60" height="30"/>
+                        <rect key="frame" x="83.5" y="295" width="60" height="30"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="30" id="fTr-m2-pPc"/>
                             <constraint firstAttribute="width" constant="60" id="gds-Qo-a6L"/>
@@ -55,23 +55,23 @@
                 <constraint firstItem="7mO-t0-PAw" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="31K-5V-fYZ"/>
                 <constraint firstItem="gCb-nc-wra" firstAttribute="top" secondItem="7mO-t0-PAw" secondAttribute="bottom" constant="10" id="3UV-Ne-fnh"/>
                 <constraint firstAttribute="trailing" secondItem="gCb-nc-wra" secondAttribute="trailing" constant="10" id="LB0-Gp-6cY"/>
-                <constraint firstAttribute="bottom" secondItem="lmL-rL-WIj" secondAttribute="bottom" constant="15" id="PdQ-TA-mfr"/>
                 <constraint firstItem="FYU-yV-YP6" firstAttribute="top" secondItem="gCb-nc-wra" secondAttribute="bottom" constant="5" id="drf-ZO-lhO"/>
                 <constraint firstItem="gCb-nc-wra" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="goq-Cf-i7U"/>
                 <constraint firstItem="lmL-rL-WIj" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="iU4-0i-Onu"/>
                 <constraint firstItem="FYU-yV-YP6" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="jX5-Th-kJh"/>
+                <constraint firstAttribute="bottom" secondItem="lmL-rL-WIj" secondAttribute="bottom" constant="7" id="mid-7n-bci"/>
                 <constraint firstAttribute="trailing" secondItem="FYU-yV-YP6" secondAttribute="trailing" constant="10" id="oZn-ch-bde"/>
                 <constraint firstAttribute="trailing" secondItem="7mO-t0-PAw" secondAttribute="trailing" id="sH3-Pg-Brg"/>
                 <constraint firstItem="7mO-t0-PAw" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="ywa-Fs-Qhu"/>
             </constraints>
-            <size key="customSize" width="227" height="266"/>
+            <size key="customSize" width="227" height="343"/>
             <connections>
                 <outlet property="bookButton" destination="lmL-rL-WIj" id="wfq-1l-d9D"/>
                 <outlet property="movieReleaseDate" destination="FYU-yV-YP6" id="8US-o0-e1N"/>
                 <outlet property="movieTitle" destination="gCb-nc-wra" id="Udc-Ge-LzW"/>
                 <outlet property="posterImage" destination="7mO-t0-PAw" id="pyI-52-C8d"/>
             </connections>
-            <point key="canvasLocation" x="141.30434782608697" y="155.35714285714286"/>
+            <point key="canvasLocation" x="141.30434782608697" y="180.80357142857142"/>
         </collectionViewCell>
     </objects>
     <resources>

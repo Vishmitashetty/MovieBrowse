@@ -16,5 +16,9 @@ struct Constants {
         static let SCREEN_MAX_LENGTH    = max(ScreenSize.SCREEN_WIDTH, ScreenSize.SCREEN_HEIGHT)
         static let SCREEN_MIN_LENGTH    = min(ScreenSize.SCREEN_WIDTH, ScreenSize.SCREEN_HEIGHT)
     }
+    
+    struct NotificationObserver {
+        static let customerReviewLoad = "customerReviewLoad"
+    }
 }
 

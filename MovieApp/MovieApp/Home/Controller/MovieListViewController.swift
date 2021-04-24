@@ -69,7 +69,7 @@ extension MovieListViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = Constants.ScreenSize.SCREEN_WIDTH - 64
-        return CGSize(width: floor(width/2.0), height: 255)
+        return CGSize(width: floor(width/2.0), height: 332)
     }
     
     
@@ -82,11 +82,15 @@ extension MovieListViewController: UICollectionViewDelegateFlowLayout {
 //MARK: - UICollectionViewDelegate
 extension MovieListViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        //ToDo
+        let movieId = movieCollectionDataSource.movieList[indexPath.row].id
+        let storyBoard = UIStoryboard(name: "MovieDetail", bundle: nil)
+        guard
+            let vc = storyBoard.instantiateViewController(identifier: "movieDetailViewController") as? MovieDetailViewController else {return}
+        vc.movieId = movieId
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        //ToDo
         if movieCollectionDataSource.movieList.count == indexPath.row + 1 && (movieList?.totalPages ?? 0) > pageNo {
             pageNo += 1
             getNowPlaying(pageNo: pageNo)

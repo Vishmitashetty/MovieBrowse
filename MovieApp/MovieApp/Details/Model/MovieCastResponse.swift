@@ -9,12 +9,12 @@ import Foundation
 
 
 struct MovieCastResponse: Codable {
-    let id: String?
+    let id: Int?
     let cast: [Cast]?
 }
 
 struct Cast: Codable {
-    let id: String?
+    let id: Int?
     let name: String?
     let popularity: Float?
     let profilePath: String?

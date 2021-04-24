@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Movie Detail View Controller-->
+        <scene sceneID="PGD-1Q-Cub">
+            <objects>
+                <viewController storyboardIdentifier="movieDetailViewController" id="Y7p-ap-sjA" customClass="MovieDetailViewController" customModule="MovieApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="uoy-xj-WZn">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="0P2-IQ-JMe">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="QPt-yM-CQN">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                            </collectionView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="lTI-Ur-juY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="0P2-IQ-JMe" firstAttribute="leading" secondItem="lTI-Ur-juY" secondAttribute="leading" id="bcx-RN-Wrs"/>
+                            <constraint firstItem="0P2-IQ-JMe" firstAttribute="top" secondItem="lTI-Ur-juY" secondAttribute="top" id="cm1-Eu-kYD"/>
+                            <constraint firstItem="lTI-Ur-juY" firstAttribute="bottom" secondItem="0P2-IQ-JMe" secondAttribute="bottom" id="kVF-VF-hB5"/>
+                            <constraint firstItem="lTI-Ur-juY" firstAttribute="trailing" secondItem="0P2-IQ-JMe" secondAttribute="trailing" id="n1M-PD-pfP"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="movieDetailCollectionView" destination="0P2-IQ-JMe" id="AiB-Da-SFb"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="x9Q-vA-g6k" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-378" y="102"/>
+        </scene>
+        <!--Customer Review View Controller-->
+        <scene sceneID="fIB-qC-Cgp">
+            <objects>
+                <viewController storyboardIdentifier="CustomerReviewViewController" id="d4q-VY-c81" customClass="CustomerReviewViewController" customModule="MovieApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="j9q-IF-CZV">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3U8-2x-Fd6">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Btf-o0-tXS"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="3U8-2x-Fd6" firstAttribute="leading" secondItem="Btf-o0-tXS" secondAttribute="leading" id="7Cv-sw-rOj"/>
+                            <constraint firstItem="Btf-o0-tXS" firstAttribute="bottom" secondItem="3U8-2x-Fd6" secondAttribute="bottom" id="B5b-Aq-EpZ"/>
+                            <constraint firstItem="3U8-2x-Fd6" firstAttribute="top" secondItem="Btf-o0-tXS" secondAttribute="top" id="NU9-Tm-RXX"/>
+                            <constraint firstItem="Btf-o0-tXS" firstAttribute="trailing" secondItem="3U8-2x-Fd6" secondAttribute="trailing" id="fjE-O6-Svg"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="customerReviewTableView" destination="3U8-2x-Fd6" id="s73-o3-gJO"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ibu-TQ-btE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="493" y="91"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
