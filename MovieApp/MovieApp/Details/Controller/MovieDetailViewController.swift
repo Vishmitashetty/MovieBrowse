@@ -32,7 +32,7 @@ class MovieDetailViewController: UIViewController {
     func register() {
         //Cell Register
         movieDetailCollectionView.register(UINib(nibName: "\(SynoypsisCollectionViewCell.self)", bundle: Bundle.main), forCellWithReuseIdentifier: SynoypsisCollectionViewCell.identifier)
-        movieDetailCollectionView.register(UINib(nibName: "\(SimilarMovieCollectionViewCell.self)", bundle: Bundle.main), forCellWithReuseIdentifier: SimilarMovieCollectionViewCell.identifier)
+        movieDetailCollectionView.register(UINib(nibName: "\(SimilarMovieCollectionView.self)", bundle: Bundle.main), forCellWithReuseIdentifier: SimilarMovieCollectionView.identifier)
         movieDetailCollectionView.register(UINib(nibName: "\(MovieCastCollectionViewCell.self)", bundle: Bundle.main), forCellWithReuseIdentifier: MovieCastCollectionViewCell.identifier)
         
         //Section Header
@@ -93,6 +93,7 @@ extension MovieDetailViewController {
             guard let weakSelf = self else {return}
             switch result {
             case .success(let similarMovieResponse, _):
+                weakSelf.movieDetailDataSource.movieId = movieId
                 weakSelf.movieDetailDataSource.similarMovieResponse = similarMovieResponse
                 weakSelf.movieDetailCollectionView.reloadSections(IndexSet([1]))
             case .failure:
@@ -120,7 +121,8 @@ extension MovieDetailViewController: UICollectionViewDelegateFlowLayout {
             let totalHeight = subHeadingFrame.height + 340
             return CGSize(width: floor(width), height: totalHeight)
         case 1:
-            return CGSize(width: floor(width/2), height: 292)
+            let headerHeight = movieDetailDataSource.similarMovieResponse?.results.count == 0 ? 0 : 300
+            return CGSize(width: floor(width), height: CGFloat(headerHeight))
         case 3:
             return CGSize(width: floor((width - 40)/2), height: 285)
         default:
@@ -144,7 +146,8 @@ extension MovieDetailViewController: UICollectionViewDelegateFlowLayout {
         
         switch section {
         case 1:
-            return CGSize(width: Constants.ScreenSize.SCREEN_WIDTH, height: 60)
+            let headerHeight = movieDetailDataSource.similarMovieResponse?.results.count == 0 ? 0 : 60
+            return CGSize(width: Constants.ScreenSize.SCREEN_WIDTH, height: CGFloat(headerHeight))
         case 2:
             return CGSize(width: Constants.ScreenSize.SCREEN_WIDTH, height: 60)
         case 3:

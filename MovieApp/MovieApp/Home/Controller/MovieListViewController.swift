@@ -54,12 +54,11 @@ extension MovieListViewController {
             let movieArray = movieList.results else {
             return
         }
-        
+        movieCollectionDataSource.movieList.append(contentsOf: movieArray)
+        self.movieList = movieList
+        let indexPaths = (0 ..< movieCollectionDataSource.movieList.count).map { IndexPath(row: $0, section: 0) }
         movieCollectionView.performBatchUpdates ({
-            let indexPath = IndexPath(row: movieCollectionDataSource.movieList.count - 1, section: 0)
-            movieCollectionDataSource.movieList.append(contentsOf: movieArray)
-            self.movieList = movieList
-            movieCollectionView.insertItems(at: [indexPath])
+            movieCollectionView.insertItems(at: indexPaths)
         }, completion: nil)
     }
 }

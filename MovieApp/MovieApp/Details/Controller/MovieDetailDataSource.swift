@@ -12,6 +12,7 @@ class MovieDetailDataSource: NSObject, UICollectionViewDataSource {
     var synoypsisResponse: SynoypsisResponse?
     var similarMovieResponse: SimilarMovieResponse?
     var movieCastResponse: MovieCastResponse?
+    var movieId: Int?
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 4
@@ -22,7 +23,7 @@ class MovieDetailDataSource: NSObject, UICollectionViewDataSource {
         case 0:
             return 1
         case 1:
-            return similarMovieResponse?.results.count ?? 0
+            return 1
         case 3:
             return movieCastResponse?.cast?.count ?? 0
         default:
@@ -85,9 +86,9 @@ extension MovieDetailDataSource {
     
     fileprivate func fetchSimilarMovie(_ collectionView: UICollectionView, indexPath: IndexPath) -> UICollectionViewCell {
         guard
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SimilarMovieCollectionViewCell.identifier, for: indexPath) as? SimilarMovieCollectionViewCell else {return UICollectionViewCell()}
-        let similarMovieResult = similarMovieResponse?.results[indexPath.row]
-        cell.configureCell(similarMovieResult)
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SimilarMovieCollectionView.identifier, for: indexPath) as? SimilarMovieCollectionView else {return UICollectionViewCell()}
+        cell.movieId = movieId
+        cell.configureCell(similarMovieResponse)
         return cell
     }
     
