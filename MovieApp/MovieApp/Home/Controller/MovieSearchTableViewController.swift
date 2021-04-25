@@ -6,18 +6,37 @@
 //
 
 import UIKit
+import CoreData
 
 class MovieSearchTableViewController: UITableViewController {
 
     var movieSearchRepository: MovieSearchRepository = MovieSearchRepository.shared
     var movieResponse: MovieListResponse?
-    var recentSearchers: [RecentSearches]?
+
+    
+    lazy var recentSearchResultsController: NSFetchedResultsController<RecentSearches> = {
+        let fetchRequest: NSFetchRequest<RecentSearches> = RecentSearches.fetchRequest()
+        fetchRequest.fetchLimit = 5
+        let sortDescriptor = NSSortDescriptor(key: "date", ascending: false)
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        let recentSearchController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: CoreDataStack.shared.managedContext, sectionNameKeyPath: nil, cacheName: nil)
+        return recentSearchController
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         register()
         setupView()
-        setupRecentSearch()
+        fetchRecentMovie()
+    }
+    
+    fileprivate func fetchRecentMovie() {
+        do {
+            try recentSearchResultsController.performFetch()
+            recentSearchResultsController.delegate = self
+        } catch {
+            fatalError("Error fetching Recent Searches from CoreData")
+        }
     }
     
     fileprivate func setupSearch() {
@@ -26,21 +45,16 @@ class MovieSearchTableViewController: UITableViewController {
         search.searchBar.searchBarStyle = .default
         search.searchBar.backgroundImage = UIImage()
         search.searchResultsUpdater = self
-        search.searchBar.delegate = self
+        search.obscuresBackgroundDuringPresentation = false
         search.searchBar.placeholder = "Type something here to search"
         //navigationItem.titleView = search.searchBar
         navigationItem.searchController = search
-        search.searchBar.becomeFirstResponder()
-    }
-    
-    fileprivate func setupRecentSearch() {
-        recentSearchers = RecentSearchesOperations.shared.fetchRecentSearches()
-        self.tableView.reloadSections(IndexSet([1]), with: .none)
     }
     
     fileprivate func setupView() {
+        tableView.tableFooterView = UIView()
         setupSearch()
-        setCustomNavigation()
+        self.navigationController?.navigationBar.tintColor = .black
         self.navigationController?.navigationBar.isTranslucent = false
         self.navigationController?.view.backgroundColor = .white
     }
@@ -56,7 +70,7 @@ class MovieSearchTableViewController: UITableViewController {
         case 0:
             return movieResponse?.results?.count ?? 0
         case 1:
-            return recentSearchers?.count ?? 0
+            return recentSearchResultsController.fetchedObjects?.count ?? 0
         default:
             return 0
         }
@@ -73,7 +87,8 @@ class MovieSearchTableViewController: UITableViewController {
         case 1:
             guard
                 let cell = tableView.dequeueReusableCell(withIdentifier: RecentSearchTableViewCell.identifier, for: indexPath) as? RecentSearchTableViewCell else {return UITableViewCell()}
-            cell.recentSearchLabel.text = recentSearchers?[indexPath.row].movieName ?? ""
+            let recentMovie = recentSearchResultsController.object(at: IndexPath(row: indexPath.row, section: 0))
+            cell.recentSearchLabel.text = recentMovie.movieName
             return cell
         default:
             return UITableViewCell()
@@ -84,7 +99,7 @@ class MovieSearchTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch section {
         case 1:
-            return "Recent Searches"
+            return "    Recent Searches"
         default:
             return ""
         }
@@ -103,34 +118,22 @@ class MovieSearchTableViewController: UITableViewController {
             vc.movieId = Int(movie.id ?? 0)
             self.navigationController?.pushViewController(vc, animated: true)
         case 1:
-            if let movieId = recentSearchers?[indexPath.row].movieId, movieId != 0 {
-                vc.movieId = Int(movieId)
-                self.navigationController?.pushViewController(vc, animated: true)
-            }
+            let recentMovie = recentSearchResultsController.object(at: IndexPath(row: indexPath.row, section: 0))
+            vc.movieId = Int(recentMovie.movieId)
+            self.navigationController?.pushViewController(vc, animated: true)
         default:
             break
         }
     }
 }
 
+//MARK: - UISearchResultsUpdating
 extension MovieSearchTableViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         guard let text = searchController.searchBar.text else { return }
         if text.isEmpty == false {
             getMovieBySearch(query: text)
         }
-    }
-}
-
-extension MovieSearchTableViewController: UISearchBarDelegate {
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar){
-        // tap on cancel click
-    }
-    
-    
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        // Click on search button on keyboard
-        
     }
 }
 
@@ -143,7 +146,7 @@ extension MovieSearchTableViewController {
             switch result {
             case .success(let movieList, _):
                 weakSelf.movieResponse = movieList
-                self?.tableView.reloadSections(IndexSet([0]), with: .none)
+                self?.tableView.reloadSections(IndexSet(integer: 0), with: .none)
             case .failure:
                 break
             }
@@ -154,5 +157,12 @@ extension MovieSearchTableViewController {
         //Cell Register
         tableView.register(UINib(nibName: "\(RecentSearchTableViewCell.self)", bundle: Bundle.main), forCellReuseIdentifier: RecentSearchTableViewCell.identifier)
         tableView.register(UINib(nibName: "\(MovieSearchTableViewCell.self)", bundle: Bundle.main), forCellReuseIdentifier: MovieSearchTableViewCell.identifier)
+    }
+}
+
+//MARK: - NSFetchedResultsControllerDelegate
+extension MovieSearchTableViewController: NSFetchedResultsControllerDelegate {
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        self.tableView.reloadSections(IndexSet(integer: 1), with: .none)
     }
 }

@@ -115,22 +115,19 @@ extension MovieListViewController: UICollectionViewDelegateFlowLayout {
 //MARK: - UICollectionViewDelegate
 extension MovieListViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let movieId = movieCollectionDataSource.movieList[indexPath.row].id
+        let movie = movieCollectionDataSource.movieList[indexPath.row]
         let storyBoard = UIStoryboard(name: "MovieDetail", bundle: nil)
         guard
             let vc = storyBoard.instantiateViewController(identifier: "movieDetailViewController") as? MovieDetailViewController else {return}
-        vc.movieId = Int(movieId ?? 0)
+        vc.movieId = Int(movie.id ?? 0)
+        vc.movieTitle = movie.title
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         if movieCollectionDataSource.movieList.count == indexPath.row + 1 && (movieList?.totalPages ?? 0) > pageNo {
             pageNo += 1
-//            if search.isActive, let searchText = search.searchBar.text {
-//                getMovieBySearch(query: searchText, pageNo: pageNo)
-//            } else {
-                getNowPlaying(pageNo: pageNo)
-           // }
+            getNowPlaying(pageNo: pageNo)
         }
     }
 }

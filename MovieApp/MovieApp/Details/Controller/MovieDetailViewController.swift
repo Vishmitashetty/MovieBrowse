@@ -13,7 +13,7 @@ class MovieDetailViewController: UIViewController {
     
     var movieDetailDataSource = MovieDetailDataSource()
     var movieId: Int?
-    
+    var movieTitle: String?
     var synoypsisRepository = GetSynoypsisRepository.shared
     var movieCastRepository = MovieCastRepository.shared
     var similarMovieRepository = SimilarMovieRepository.shared
@@ -22,6 +22,7 @@ class MovieDetailViewController: UIViewController {
         super.viewDidLoad()
         movieDetailCollectionView.dataSource = movieDetailDataSource
         movieDetailCollectionView.delegate = self
+        self.title = movieTitle ?? ""
         register()
         
         getSynoypsis(movieId: movieId)
