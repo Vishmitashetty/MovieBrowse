@@ -13,6 +13,7 @@ class MovieListCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var movieTitle: UILabel!
     @IBOutlet weak var movieReleaseDate: UILabel!
     @IBOutlet weak var bookButton: UIButton!
+    @IBOutlet weak var ratingLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -22,6 +23,8 @@ class MovieListCollectionViewCell: UICollectionViewCell {
     func configureCell(_ movie: Movie?) {
         movieTitle.text = movie?.title ?? ""
         movieReleaseDate.text = movie?.releaseDate ?? ""
+        ratingLabel.text = "\(movie?.voteAverage ?? 0.0) (\(Int(movie?.voteCount ?? 0.0)))"
+        bookButton.setButton()
         if let posterPath = movie?.posterPath {
             let imageUrl = "https://image.tmdb.org/t/p/w500" + "\(posterPath)"
             posterImage.setCornerRadius()
