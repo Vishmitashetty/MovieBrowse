@@ -18,7 +18,7 @@ class MovieCastCollectionViewCell: UICollectionViewCell {
     }
     
     func configureCell(_ cast: Cast?) {
-        castNameLabel.text = cast?.name ?? ""
+        castNameLabel.text = "\(cast?.name ?? "") \n(\(cast?.character ?? ""))"
         if let profilePath = cast?.profilePath {
             let imageUrl = "https://image.tmdb.org/t/p/w500" + "\(profilePath)"
             posterImageView.loadImage(with: imageUrl, placeholder: UIImage(named: "neutralProfileIcon"))

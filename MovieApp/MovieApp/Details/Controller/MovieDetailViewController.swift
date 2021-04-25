@@ -43,6 +43,7 @@ class MovieDetailViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.setCustomNavigation()
         setNotificationObserver()
     }
     
@@ -118,13 +119,13 @@ extension MovieDetailViewController: UICollectionViewDelegateFlowLayout {
         case 0:
             //Cell height
             let subHeadingFrame = NSString(string: movieDetailDataSource.synoypsisResponse?.overview ?? "").boundingRect(with: CGSize(width: width, height: CGFloat.infinity), options: .usesLineFragmentOrigin, attributes: [.font: UIFont.init(name: "HelveticaNeue-Thin", size: 13)!], context: nil).size
-            let totalHeight = subHeadingFrame.height + 340
+            let totalHeight = subHeadingFrame.height + 320
             return CGSize(width: floor(width), height: totalHeight)
         case 1:
             let headerHeight = movieDetailDataSource.similarMovieResponse?.results.count == 0 ? 0 : 300
             return CGSize(width: floor(width), height: CGFloat(headerHeight))
         case 3:
-            return CGSize(width: floor((width - 40)/2), height: 285)
+            return CGSize(width: floor((width - 40)/2), height: 290)
         default:
             return CGSize.zero
         }

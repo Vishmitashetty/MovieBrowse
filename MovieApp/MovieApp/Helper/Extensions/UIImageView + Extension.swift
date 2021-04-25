@@ -35,6 +35,14 @@ extension UIImageView {
 
     }
     
+    func addBlurEffect() {
+        let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.dark)
+        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+        blurEffectView.frame = self.bounds
+        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        self.addSubview(blurEffectView)
+    }
+    
     func addGradientLayer(color: [CGColor], locations: [Double]) {
       //  self.layer.sublayers?.forEach { $0.removeFromSuperlayer() }
         let view = UIView(frame: self.frame)

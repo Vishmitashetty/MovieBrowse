@@ -21,6 +21,7 @@ class MovieListViewController: UIViewController {
         register()
         setup()
         getNowPlaying(pageNo: pageNo)
+        self.title = "Movie App"
     }
 }
 
