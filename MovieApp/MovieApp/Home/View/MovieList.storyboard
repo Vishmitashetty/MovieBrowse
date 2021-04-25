@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Dyf-a3-Vrv">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="jbP-2U-rVQ">
                                     <size key="itemSize" width="128" height="128"/>
@@ -37,14 +37,76 @@
                             <constraint firstItem="Lqs-AJ-AEf" firstAttribute="bottom" secondItem="Dyf-a3-Vrv" secondAttribute="bottom" id="kMg-g9-dgE"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="BEc-Zt-Wj2"/>
+                    <navigationItem key="navigationItem" id="BEc-Zt-Wj2">
+                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="oVV-sk-PED">
+                            <connections>
+                                <action selector="searchMovie:" destination="BQd-qb-1Xz" id="mfQ-J3-2Xn"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="movieCollectionView" destination="Dyf-a3-Vrv" id="DCD-h1-YIr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L4G-Qx-bSP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1762.3188405797102" y="89.732142857142847"/>
+        </scene>
+        <!--Movie Search Table View Controller-->
+        <scene sceneID="zQF-vC-RYl">
+            <objects>
+                <tableViewController storyboardIdentifier="MovieSearchTableViewController" id="REN-hg-qRP" customClass="MovieSearchTableViewController" customModule="MovieApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="tkw-9O-GRf">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        <connections>
+                            <outlet property="dataSource" destination="REN-hg-qRP" id="u4G-XX-fGC"/>
+                            <outlet property="delegate" destination="REN-hg-qRP" id="Rug-eQ-OVn"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="U6r-eK-Exl"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eEw-d1-BA7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3452.1739130434785" y="112.5"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="gOW-zf-Nwm">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="dN0-Vg-GSQ" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="U9N-xB-eE9">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BQd-qb-1Xz" kind="relationship" relationship="rootViewController" id="idc-za-Oju"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jwV-Fh-kWN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
             <point key="canvasLocation" x="852.17391304347836" y="89.732142857142847"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="aaq-ZB-YJK">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="NH9-BX-Kme" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="8Cb-Z6-Gwa">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="REN-hg-qRP" kind="relationship" relationship="rootViewController" id="ISL-C2-2uw"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PF4-Ab-5kT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2542.0289855072465" y="112.5"/>
         </scene>
     </scenes>
     <resources>

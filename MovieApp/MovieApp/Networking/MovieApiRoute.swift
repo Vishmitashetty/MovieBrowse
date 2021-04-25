@@ -35,7 +35,7 @@ enum MovieApiRoute {
     case reviews(movieId: String, pageNo: Int)
     case credits(movieId: String)
     case similar(movieId: String, pageNo: Int)
-    case search
+    case search(query: String, pageNo: Int)
 }
 
 extension MovieApiRoute: URLComponentsRepresentable {
@@ -73,8 +73,12 @@ extension MovieApiRoute: URLComponentsRepresentable {
             queryParam.append(URLQueryItem(name: "api_key", value: Environment.apiKey))
             queryParam.append(URLQueryItem(name: "page", value: String(pageNo)))
             return queryParam
-        default:
-            return nil
+        case .search(let query, let pageNo):
+            var queryParam: [URLQueryItem] = []
+            queryParam.append(URLQueryItem(name: "api_key", value: Environment.apiKey))
+            queryParam.append(URLQueryItem(name: "page", value: String(pageNo)))
+            queryParam.append(URLQueryItem(name: "query", value: query))
+            return queryParam
         }
     }
     
@@ -92,7 +96,7 @@ extension MovieApiRoute: URLComponentsRepresentable {
         case .similar(let movieId, _):
             return "\(basePath)/movie/\(movieId)/similar"
         case .search:
-            return ""
+            return "\(basePath)/search/movie"
         }
     }
 }

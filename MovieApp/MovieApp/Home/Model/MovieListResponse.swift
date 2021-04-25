@@ -15,7 +15,7 @@ struct MovieListResponse: Codable {
 }
 
 struct Movie: Codable {
-    let id: Int?
+    let id: Int64?
     let title: String?
     let overview: String?
     let voteAverage: Float?

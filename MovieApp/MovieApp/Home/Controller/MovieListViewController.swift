@@ -13,16 +13,27 @@ class MovieListViewController: UIViewController {
     
     var movieCollectionDataSource = MovieListCollectionDataSource()
     var movieListRepository: MovieListRepositoryProtocol = MovieListRepository.shared
+    var movieSearchRepository: MovieSearchRepository = MovieSearchRepository.shared
     var pageNo: Int = 1
     var movieList: MovieListResponse?
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         register()
         setup()
-        getNowPlaying(pageNo: pageNo)
+        getNowPlaying(pageNo: 1)
         self.title = "Movie App"
+        setCustomNavigation(isLeftBarButton: false)
+        self.navigationController?.view.backgroundColor = .white
     }
+    
+    @IBAction func searchMovie(_ sender: Any) {
+        let storyBoard = UIStoryboard(name: "MovieList", bundle: nil)
+        guard
+            let vc = storyBoard.instantiateViewController(withIdentifier: "MovieSearchTableViewController") as? MovieSearchTableViewController else {return}
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
 }
 
 //MARK: - API Call
@@ -38,6 +49,11 @@ extension MovieListViewController {
     }
     
     fileprivate func getNowPlaying(pageNo: Int) {
+        self.pageNo = pageNo
+        if self.pageNo == 1 {
+            //If page no is 1 then reset the data source to show latest data
+            self.movieCollectionDataSource.movieList = []
+        }
         movieListRepository.getNowPlaying(pageNo: pageNo) { [weak self] (result) in
             guard let weakSelf = self else {return}
             
@@ -49,6 +65,23 @@ extension MovieListViewController {
             }
         }
     }
+    
+//    fileprivate func getMovieBySearch(query: String, pageNo: Int) {
+//        self.pageNo = pageNo
+//        movieSearchRepository.getMovieBySearch(pageNo: pageNo, query: query) {[weak self] (result) in
+//            guard let weakSelf = self else {return}
+//
+//            switch result {
+//            case .success(let movieList, _):
+//                //Reset existing data source and show search result
+//                weakSelf.movieCollectionDataSource.movieList = []
+//                weakSelf.loadMovieData(movieList: movieList)
+//            case .failure:
+//                break
+//            }
+//        }
+//
+//    }
     
     fileprivate func loadMovieData(movieList: MovieListResponse) {
         guard
@@ -86,14 +119,18 @@ extension MovieListViewController: UICollectionViewDelegate {
         let storyBoard = UIStoryboard(name: "MovieDetail", bundle: nil)
         guard
             let vc = storyBoard.instantiateViewController(identifier: "movieDetailViewController") as? MovieDetailViewController else {return}
-        vc.movieId = movieId
+        vc.movieId = Int(movieId ?? 0)
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         if movieCollectionDataSource.movieList.count == indexPath.row + 1 && (movieList?.totalPages ?? 0) > pageNo {
             pageNo += 1
-            getNowPlaying(pageNo: pageNo)
+//            if search.isActive, let searchText = search.searchBar.text {
+//                getMovieBySearch(query: searchText, pageNo: pageNo)
+//            } else {
+                getNowPlaying(pageNo: pageNo)
+           // }
         }
     }
 }

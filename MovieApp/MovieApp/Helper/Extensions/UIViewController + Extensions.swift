@@ -9,7 +9,7 @@ import UIKit
 
 extension UIViewController {
     
-    func setCustomNavigation() {
+    func setCustomNavigation(isLeftBarButton: Bool = true) {
         guard
             let navigationBar = self.navigationController?.navigationBar  else { return }
         
@@ -21,7 +21,7 @@ extension UIViewController {
         self.navigationController?.view.backgroundColor = UIColor.clear
         // Left
         let backButton = UIBarButtonItem(image: UIImage(named: "backButton"), style: .plain, target: self, action: #selector(backButtonAction))
-        self.navigationItem.leftBarButtonItems = [backButton]
+        self.navigationItem.leftBarButtonItems = isLeftBarButton ? [backButton] : []
     }
     
     @objc func backButtonAction() {

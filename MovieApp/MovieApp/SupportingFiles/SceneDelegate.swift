@@ -32,6 +32,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         /// 5. Set the window and call makeKeyAndVisible()
         self.window = window
+        window.overrideUserInterfaceStyle = .light
         window.makeKeyAndVisible()
     }
 
@@ -63,7 +64,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // to restore the scene back to its current state.
 
         // Save changes in the application's managed object context when the application transitions to the background.
-        (UIApplication.shared.delegate as? AppDelegate)?.saveContext()
     }
 
 
