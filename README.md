@@ -16,10 +16,10 @@ This App is based upon Apple standard MVC Architecture, And code is arranged in 
 
 For each feature we maintained different module and used storyboard and xib's to create UI
 
-1. Home -> This module includes movie list
-3. Details -> This module includes synoypsis, similar movie, customer review, cast and crew details
-4. Customer Reviews -> This module includes customer review screen
-5. Movie Search -> This module includes movie search and also support offline recent search
+1. Home: This module includes movie list
+3. Details: This module includes synoypsis, similar movie, customer review, cast and crew details
+4. Customer Reviews: This module includes customer review screen
+5. Movie Search: This module includes movie search and also support offline recent search
 6. Helper: This module includes Constants, UIKit and Foundation Kit extension
 
 ## Unit test coverage (~ 48%)
@@ -37,6 +37,7 @@ This project is using cocoapods as dependecy manager
 
 # Project Demo
 
+https://user-images.githubusercontent.com/8758234/116006230-dd336380-a627-11eb-913c-d1d464c1b932.mov
 
-Uploading Screen Recording 2021-04-25 at 10.40.19 PM.mov…
+
 
