@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Lottie
 
 class MovieListViewController: UIViewController {
 
@@ -16,12 +17,13 @@ class MovieListViewController: UIViewController {
     var movieSearchRepository: MovieSearchRepository = MovieSearchRepository.shared
     var pageNo: Int = 1
     var movieList: MovieListResponse?
+    private var animationView: AnimationView?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         register()
         setup()
-        getNowPlaying(pageNo: 1)
+        setLoader()
         self.title = "Movie App"
         setCustomNavigation(isLeftBarButton: false)
         self.navigationController?.view.backgroundColor = .white
@@ -39,6 +41,18 @@ class MovieListViewController: UIViewController {
 //MARK: - API Call
 extension MovieListViewController {
     
+    fileprivate func setLoader() {
+        animationView = .init(name: "movieLoader")
+        animationView!.frame = view.bounds
+        animationView!.contentMode = .scaleAspectFit
+        animationView!.animationSpeed = 0.5
+        view.addSubview(animationView!)
+        animationView?.play(completion: { (result) in
+            self.animationView?.removeFromSuperview()
+            self.getNowPlaying(pageNo: 1)
+        })
+    }
+    
     fileprivate func setup() {
         movieCollectionView.delegate = self
         movieCollectionView.dataSource = movieCollectionDataSource
@@ -49,6 +63,7 @@ extension MovieListViewController {
     }
     
     fileprivate func getNowPlaying(pageNo: Int) {
+        self.startActivityIndicator()
         self.pageNo = pageNo
         if self.pageNo == 1 {
             //If page no is 1 then reset the data source to show latest data
@@ -56,7 +71,7 @@ extension MovieListViewController {
         }
         movieListRepository.getNowPlaying(pageNo: pageNo) { [weak self] (result) in
             guard let weakSelf = self else {return}
-            
+            weakSelf.stopActivityIndicator()
             switch result {
             case .success(let movieList, _):
                 weakSelf.loadMovieData(movieList: movieList)
@@ -65,23 +80,6 @@ extension MovieListViewController {
             }
         }
     }
-    
-//    fileprivate func getMovieBySearch(query: String, pageNo: Int) {
-//        self.pageNo = pageNo
-//        movieSearchRepository.getMovieBySearch(pageNo: pageNo, query: query) {[weak self] (result) in
-//            guard let weakSelf = self else {return}
-//
-//            switch result {
-//            case .success(let movieList, _):
-//                //Reset existing data source and show search result
-//                weakSelf.movieCollectionDataSource.movieList = []
-//                weakSelf.loadMovieData(movieList: movieList)
-//            case .failure:
-//                break
-//            }
-//        }
-//
-//    }
     
     fileprivate func loadMovieData(movieList: MovieListResponse) {
         guard

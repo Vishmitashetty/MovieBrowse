@@ -37,8 +37,10 @@ extension CustomerReviewViewController {
     }
     
     fileprivate func getUserReview(movieId: Int?, page: Int) {
+        self.startActivityIndicator()
         userReviewsRepository.getReviews(movieId: movieId, pageNo: page) { [weak self] (result) in
             guard let weakSelf = self else {return}
+            weakSelf.stopActivityIndicator()
             switch result {
             case .success(let userReviewResponse, _):
                 weakSelf.userReviewResponse = userReviewResponse

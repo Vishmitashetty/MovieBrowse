@@ -65,8 +65,10 @@ class MovieDetailViewController: UIViewController {
 //MARK: - API calls
 extension MovieDetailViewController {
     fileprivate func getSynoypsis(movieId: Int?) {
+        self.startActivityIndicator()
         synoypsisRepository.getSynoypsis(movieId: movieId) { [weak self] (result) in
             guard let weakSelf = self else {return}
+            weakSelf.stopActivityIndicator()
             switch result {
             case .success(let synoypsisResponse, _):
                 weakSelf.movieDetailDataSource.synoypsisResponse = synoypsisResponse

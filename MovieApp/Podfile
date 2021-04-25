@@ -3,6 +3,7 @@ platform :ios, '12.0'
 
 def movie_app
     pod 'SDWebImage', '~> 5.0'
+    pod 'lottie-ios'
 end
 
 target 'MovieApp' do
