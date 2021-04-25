@@ -16,5 +16,6 @@ public class RecentSearches: NSManagedObject {
     func insertRecentSearch(movieId: Int64, movieName: String) {
         self.movieName = movieName
         self.movieId = movieId
+        self.date = Date()
     }
 }

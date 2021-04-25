@@ -16,23 +16,33 @@ class MovieSearchTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         register()
-        recentSearchers = RecentSearchesOperations.shared.fetchRecentSearches()
-        self.tableView.reloadSections(IndexSet([1]), with: .none)
-        setupSearch()
-        setCustomNavigation()
-        self.navigationController?.navigationBar.isTranslucent = false
-        self.navigationController?.view.backgroundColor = .white
+        setupView()
+        setupRecentSearch()
     }
     
     fileprivate func setupSearch() {
         let search = UISearchController(searchResultsController: nil)
+        search.hidesNavigationBarDuringPresentation = true
         search.searchBar.searchBarStyle = .default
         search.searchBar.backgroundImage = UIImage()
         search.searchResultsUpdater = self
         search.searchBar.delegate = self
         search.searchBar.placeholder = "Type something here to search"
-        navigationItem.titleView = search.searchBar
-        definesPresentationContext = true
+        //navigationItem.titleView = search.searchBar
+        navigationItem.searchController = search
+        search.searchBar.becomeFirstResponder()
+    }
+    
+    fileprivate func setupRecentSearch() {
+        recentSearchers = RecentSearchesOperations.shared.fetchRecentSearches()
+        self.tableView.reloadSections(IndexSet([1]), with: .none)
+    }
+    
+    fileprivate func setupView() {
+        setupSearch()
+        setCustomNavigation()
+        self.navigationController?.navigationBar.isTranslucent = false
+        self.navigationController?.view.backgroundColor = .white
     }
 
     // MARK: - Table view data source
@@ -81,14 +91,25 @@ class MovieSearchTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let movie = movieResponse?.results?[indexPath.row] else {return}
-        RecentSearchesOperations.shared.insertRecentSearches(movie: movie)
         //Push movie detail view
         let storyBoard = UIStoryboard(name: "MovieDetail", bundle: nil)
         guard
             let vc = storyBoard.instantiateViewController(identifier: "movieDetailViewController") as? MovieDetailViewController else {return}
-        vc.movieId = Int(movie.id ?? 0)
-        self.navigationController?.pushViewController(vc, animated: true)
+        
+        switch indexPath.section {
+        case 0:
+            guard let movie = movieResponse?.results?[indexPath.row], movie.id != 0 else {return}
+            RecentSearchesOperations.shared.insertRecentSearches(movie: movie)
+            vc.movieId = Int(movie.id ?? 0)
+            self.navigationController?.pushViewController(vc, animated: true)
+        case 1:
+            if let movieId = recentSearchers?[indexPath.row].movieId, movieId != 0 {
+                vc.movieId = Int(movieId)
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
+        default:
+            break
+        }
     }
 }
 
@@ -102,9 +123,6 @@ extension MovieSearchTableViewController: UISearchResultsUpdating {
 }
 
 extension MovieSearchTableViewController: UISearchBarDelegate {
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        print(searchText)
-    }
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar){
         // tap on cancel click
     }

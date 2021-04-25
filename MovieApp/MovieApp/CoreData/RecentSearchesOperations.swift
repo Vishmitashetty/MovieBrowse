@@ -47,12 +47,14 @@ class RecentSearchesOperations {
         privateMOC.parent = CoreDataStack.shared.managedContext
         var recentSearch: [RecentSearches]?
         let recentSearchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: RecentSearches.entityName)
-        
+        let sort = NSSortDescriptor(key: "date", ascending: false)
+        recentSearchRequest.sortDescriptors = [sort]
+        recentSearchRequest.fetchLimit = 5
         privateMOC.performAndWait {
             do {
                 recentSearch = try privateMOC.fetch(recentSearchRequest) as? [RecentSearches]
             } catch {
-                debugPrint("Error fetching cart id")
+                debugPrint("Error fetching recent search")
             }
         }
         return recentSearch ?? []

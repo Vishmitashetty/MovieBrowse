@@ -16,8 +16,9 @@ extension RecentSearches {
         return NSFetchRequest<RecentSearches>(entityName: "RecentSearches")
     }
 
-    @NSManaged public var movieName: String?
     @NSManaged public var movieId: Int64
+    @NSManaged public var movieName: String?
+    @NSManaged public var date: Date?
 
 }
 

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17192" systemVersion="19H2" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="RecentSearches" representedClassName="RecentSearches" syncable="YES">
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="movieId" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="movieName" optional="YES" attributeType="String"/>
         <uniquenessConstraints>
@@ -10,6 +11,6 @@
         </uniquenessConstraints>
     </entity>
     <elements>
-        <element name="RecentSearches" positionX="-63" positionY="-18" width="128" height="73"/>
+        <element name="RecentSearches" positionX="-63" positionY="-18" width="128" height="88"/>
     </elements>
 </model>
