@@ -29,8 +29,10 @@ class CustomerReviewTableViewCell: UITableViewCell {
         if let profilePath = userReview?.authorDetails?.avatarPath {
             let imageUrl = "https://image.tmdb.org/t/p/w500" + "\(profilePath)"
             avtarImageView.loadImage(with: imageUrl, placeholder: UIImage(named: "neutralProfileIcon"))
-            avtarImageView.layer.cornerRadius = avtarImageView.frame.height/2
             avtarImageView.layer.masksToBounds = true
+        } else {
+            avtarImageView.image = UIImage(named: "neutralProfileIcon")
         }
+        avtarImageView.layer.cornerRadius = avtarImageView.frame.height/2
     }
 }

@@ -116,10 +116,12 @@ class MovieSearchTableViewController: UITableViewController {
             guard let movie = movieResponse?.results?[indexPath.row], movie.id != 0 else {return}
             RecentSearchesOperations.shared.insertRecentSearches(movie: movie)
             vc.movieId = Int(movie.id ?? 0)
+            vc.movieTitle = movie.title
             self.navigationController?.pushViewController(vc, animated: true)
         case 1:
             let recentMovie = recentSearchResultsController.object(at: IndexPath(row: indexPath.row, section: 0))
             vc.movieId = Int(recentMovie.movieId)
+            vc.movieTitle = recentMovie.movieName
             self.navigationController?.pushViewController(vc, animated: true)
         default:
             break

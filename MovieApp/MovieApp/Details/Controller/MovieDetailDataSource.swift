@@ -25,7 +25,7 @@ class MovieDetailDataSource: NSObject, UICollectionViewDataSource {
         case 1:
             return 1
         case 3:
-            return movieCastResponse?.cast?.count ?? 0
+            return movieCastResponse?.castAndCrew?.count ?? 0
         default:
             return 0
         }
@@ -95,7 +95,7 @@ extension MovieDetailDataSource {
     fileprivate func fetchMovieCast(_ collectionView: UICollectionView, indexPath: IndexPath) -> UICollectionViewCell {
         guard
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MovieCastCollectionViewCell.identifier, for: indexPath) as? MovieCastCollectionViewCell else {return UICollectionViewCell()}
-        let cast = movieCastResponse?.cast?[indexPath.row]
+        let cast = movieCastResponse?.castAndCrew?[indexPath.row]
         cell.configureCell(cast)
         return cell
     }

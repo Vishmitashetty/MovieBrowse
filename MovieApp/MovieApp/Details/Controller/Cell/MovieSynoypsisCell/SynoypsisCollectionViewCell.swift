@@ -31,7 +31,7 @@ class SynoypsisCollectionViewCell: UICollectionViewCell {
             posterPathImageView.loadImage(with: imageUrl)
             bannerImageView.loadImage(with: imageUrl)
             posterPathImageView.addBlurEffect()
-        }
+        } 
     }
 
 }

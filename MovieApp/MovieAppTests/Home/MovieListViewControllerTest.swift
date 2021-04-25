@@ -20,6 +20,7 @@ class MovieListViewControllerTest: XCTestCase {
         controller = (storyBoard.instantiateViewController(withIdentifier: "movieList") as! MovieListViewController)
         controller.movieListRepository = mockRepo
         controller.loadViewIfNeeded()
+        controller.getNowPlaying(pageNo: 1)
         movieList = mockRepo.getMovieList()
     }
     

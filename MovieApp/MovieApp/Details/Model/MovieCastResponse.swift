@@ -11,6 +11,7 @@ import Foundation
 struct MovieCastResponse: Codable {
     let id: Int?
     let cast: [Cast]?
+    let crew: [Cast]?
 }
 
 struct Cast: Codable {
@@ -19,4 +20,14 @@ struct Cast: Codable {
     let popularity: Float?
     let profilePath: String?
     let character: String?
+}
+
+extension MovieCastResponse {
+    
+    var castAndCrew: [Cast]? {
+        var castAndCrewValue: [Cast] = []
+        castAndCrewValue.append(contentsOf: cast ?? [])
+        castAndCrewValue.append(contentsOf: crew ?? [])
+        return castAndCrewValue
+    }
 }

@@ -22,8 +22,10 @@ class MovieCastCollectionViewCell: UICollectionViewCell {
         if let profilePath = cast?.profilePath {
             let imageUrl = "https://image.tmdb.org/t/p/w500" + "\(profilePath)"
             posterImageView.loadImage(with: imageUrl, placeholder: UIImage(named: "neutralProfileIcon"))
-            posterImageView.setCornerRadius()
+        } else {
+            posterImageView.image = UIImage(named: "neutralProfileIcon")
         }
+        posterImageView.setCornerRadius()
     }
     
     override func prepareForReuse() {

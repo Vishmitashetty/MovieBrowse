@@ -58,11 +58,11 @@ extension MovieListViewController {
         movieCollectionView.dataSource = movieCollectionDataSource
     }
     
-    func register() {
+    fileprivate func register() {
         movieCollectionView.register(UINib(nibName: "\(MovieListCollectionViewCell.self)", bundle: Bundle.main), forCellWithReuseIdentifier: MovieListCollectionViewCell.identifier)
     }
     
-    fileprivate func getNowPlaying(pageNo: Int) {
+    func getNowPlaying(pageNo: Int) {
         self.startActivityIndicator()
         self.pageNo = pageNo
         if self.pageNo == 1 {

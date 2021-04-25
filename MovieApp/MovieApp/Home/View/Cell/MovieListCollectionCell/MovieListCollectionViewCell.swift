@@ -27,10 +27,11 @@ class MovieListCollectionViewCell: UICollectionViewCell {
         bookButton.setButton()
         if let posterPath = movie?.posterPath {
             let imageUrl = "https://image.tmdb.org/t/p/w500" + "\(posterPath)"
-            posterImage.setCornerRadius()
             posterImage.loadImage(with: imageUrl)
+        } else {
+            posterImage.image = UIImage(named: "neutralProfileIcon")
         }
-       
+        posterImage.setCornerRadius()
     }
 
 }

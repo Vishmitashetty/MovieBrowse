@@ -23,6 +23,6 @@ class SimilarMovieCollectionViewCell: UICollectionViewCell {
             let imageUrl = "https://image.tmdb.org/t/p/w500" + "\(posterPath)"
             posterImageView.setCornerRadius()
             posterImageView.loadImage(with: imageUrl)
-        } 
+        }
     }
 }

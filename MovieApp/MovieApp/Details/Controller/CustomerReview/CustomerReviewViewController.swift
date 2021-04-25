@@ -12,7 +12,7 @@ class CustomerReviewViewController: UIViewController {
     @IBOutlet weak var customerReviewTableView: UITableView!
     
     var customerReviewDataSource = CustomerReviewDataSource()
-    var userReviewsRepository = UserReviewsRepository.shared
+    var userReviewsRepository: UserReviewsRepositoryProtocol = UserReviewsRepository.shared
     var movieId: Int?
     var userReviewResponse: UserReviewsResponse?
     var page: Int = 1
