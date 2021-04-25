@@ -12,7 +12,7 @@ class SimilarMovieCollectionView: UICollectionViewCell {
     @IBOutlet weak var similarCollectionView: UICollectionView!
     
     var similarMovieCollectionDataSource = SimilarCollectionViewDataSource()
-    var similarMovieRepository = SimilarMovieRepository.shared
+    var similarMovieRepository: SimilarMovieRepositoryProtocol = SimilarMovieRepository.shared
     var page: Int = 1
     var movieId: Int?
     var similarMovieResponse: SimilarMovieResponse?

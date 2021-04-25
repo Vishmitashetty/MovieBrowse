@@ -1,47 +1,48 @@
 {
-    "id": 399566,
-    "cast": [
-        {
-            "adult": false,
-            "gender": 2,
-            "id": 28846,
-            "known_for_department": "Acting",
-            "name": "Alexander Skarsgård",
-            "original_name": "Alexander Skarsgård",
-            "popularity": 7.867,
-            "profile_path": "",
-            "cast_id": 27,
-            "character": "Dr. Nathan Lind",
-            "credit_id": "5bd27583c3a3687437003310",
-            "order": 0
-        },
-        {
-            "adult": false,
-            "gender": 1,
-            "id": 1356210,
-            "known_for_department": "Acting",
-            "name": "Millie Bobby Brown",
-            "original_name": "Millie Bobby Brown",
-            "popularity": 24.479,
-            "profile_path": "",
-            "cast_id": 10,
-            "character": "Madison Russell",
-            "credit_id": "5b154f5dc3a368533000d528",
-            "order": 1
-        },
-        {
-            "adult": false,
-            "gender": 1,
-            "id": 15556,
-            "known_for_department": "Acting",
-            "name": "Rebecca Hall",
-            "original_name": "Rebecca Hall",
-            "popularity": 13.572,
-            "profile_path": "",
-            "cast_id": 29,
-            "character": "Dr. Ilene Andrews",
-            "credit_id": "5bd9b264925141156c00e024",
-            "order": 2
-        }
-    ]
+  "id": 399566,
+  "cast": [
+    {
+      "adult": false,
+      "gender": 2,
+      "id": 28846,
+      "known_for_department": "Acting",
+      "name": "Alexander Skarsgård",
+      "original_name": "Alexander Skarsgård",
+      "popularity": 7.867,
+      "profile_path": "/hIuDik6KDmHLrqZWxBVdXzUw1kq.jpg",
+      "cast_id": 27,
+      "character": "Dr. Nathan Lind",
+      "credit_id": "5bd27583c3a3687437003310",
+      "order": 0
+    },
+    {
+      "adult": false,
+      "gender": 1,
+      "id": 1356210,
+      "known_for_department": "Acting",
+      "name": "Millie Bobby Brown",
+      "original_name": "Millie Bobby Brown",
+      "popularity": 24.479,
+      "profile_path": "/yzfxLMcBMusKzZp9f1Z9Ags8WML.jpg",
+      "cast_id": 10,
+      "character": "Madison Russell",
+      "credit_id": "5b154f5dc3a368533000d528",
+      "order": 1
+    }
+  ],
+  "crew": [
+    {
+      "adult": false,
+      "gender": 2,
+      "id": 1706,
+      "known_for_department": "Writing",
+      "name": "Terry Rossio",
+      "original_name": "Terry Rossio",
+      "popularity": 5.467,
+      "profile_path": null,
+      "credit_id": "600dae670b5fd6003e5ddb86",
+      "department": "Writing",
+      "job": "Story"
+    }
+  ]
 }

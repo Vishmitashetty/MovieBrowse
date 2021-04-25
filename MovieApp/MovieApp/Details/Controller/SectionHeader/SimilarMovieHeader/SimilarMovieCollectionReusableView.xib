@@ -27,6 +27,9 @@
                 <constraint firstItem="VXr-Tz-HHm" firstAttribute="bottom" secondItem="Rjz-9B-TPo" secondAttribute="bottom" constant="19" id="CDS-nu-Uud"/>
                 <constraint firstItem="Rjz-9B-TPo" firstAttribute="top" secondItem="U6b-Vx-4bR" secondAttribute="top" constant="20" symbolic="YES" id="Kiq-aT-1Fn"/>
             </constraints>
+            <connections>
+                <outlet property="headerLabel" destination="Rjz-9B-TPo" id="dPH-ZP-kfb"/>
+            </connections>
             <point key="canvasLocation" x="47.826086956521742" y="72.991071428571431"/>
         </collectionReusableView>
     </objects>

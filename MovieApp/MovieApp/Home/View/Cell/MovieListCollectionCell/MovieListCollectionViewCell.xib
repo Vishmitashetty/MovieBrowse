@@ -38,10 +38,9 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lmL-rL-WIj">
-                        <rect key="frame" x="30" y="295" width="165" height="30"/>
+                        <rect key="frame" x="20" y="295" width="187" height="30"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="30" id="fTr-m2-pPc"/>
-                            <constraint firstAttribute="width" constant="165" id="gds-Qo-a6L"/>
                         </constraints>
                         <fontDescription key="fontDescription" name="KhmerSangamMN" family="Khmer Sangam MN" pointSize="15"/>
                         <state key="normal" title="Book"/>
@@ -73,14 +72,15 @@
                 <constraint firstAttribute="trailing" secondItem="NFI-SO-79d" secondAttribute="trailing" constant="10" id="Cxt-Mg-pvA"/>
                 <constraint firstAttribute="trailing" secondItem="gCb-nc-wra" secondAttribute="trailing" constant="10" id="LB0-Gp-6cY"/>
                 <constraint firstItem="Fmi-46-8DJ" firstAttribute="top" secondItem="gCb-nc-wra" secondAttribute="bottom" constant="5" id="RF3-Fq-weL"/>
+                <constraint firstItem="lmL-rL-WIj" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="20" id="Y5H-hz-IQ1"/>
                 <constraint firstItem="NFI-SO-79d" firstAttribute="top" secondItem="gCb-nc-wra" secondAttribute="bottom" constant="5" id="dOw-AE-Z6l"/>
                 <constraint firstItem="NFI-SO-79d" firstAttribute="leading" secondItem="Fmi-46-8DJ" secondAttribute="trailing" constant="5" id="dRi-iU-ZRe"/>
                 <constraint firstItem="gCb-nc-wra" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="goq-Cf-i7U"/>
-                <constraint firstItem="lmL-rL-WIj" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" constant="-1" id="iU4-0i-Onu"/>
                 <constraint firstItem="FYU-yV-YP6" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="jX5-Th-kJh"/>
                 <constraint firstAttribute="bottom" secondItem="lmL-rL-WIj" secondAttribute="bottom" constant="7" id="mid-7n-bci"/>
                 <constraint firstAttribute="trailing" secondItem="FYU-yV-YP6" secondAttribute="trailing" constant="10" id="oZn-ch-bde"/>
                 <constraint firstAttribute="trailing" secondItem="7mO-t0-PAw" secondAttribute="trailing" id="sH3-Pg-Brg"/>
+                <constraint firstAttribute="trailing" secondItem="lmL-rL-WIj" secondAttribute="trailing" constant="20" id="wvO-of-6ty"/>
                 <constraint firstItem="gCb-nc-wra" firstAttribute="top" secondItem="7mO-t0-PAw" secondAttribute="bottom" constant="5" id="xOX-pC-x7U"/>
                 <constraint firstItem="7mO-t0-PAw" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="ywa-Fs-Qhu"/>
             </constraints>

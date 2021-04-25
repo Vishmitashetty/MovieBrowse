@@ -14,9 +14,9 @@ class MovieDetailViewController: UIViewController {
     var movieDetailDataSource = MovieDetailDataSource()
     var movieId: Int?
     var movieTitle: String?
-    var synoypsisRepository = GetSynoypsisRepository.shared
-    var movieCastRepository = MovieCastRepository.shared
-    var similarMovieRepository = SimilarMovieRepository.shared
+    var synoypsisRepository: GetSynoypsisRepositoryProtocol = GetSynoypsisRepository.shared
+    var movieCastRepository: MovieCastRepositoryProtocol = MovieCastRepository.shared
+    var similarMovieRepository: SimilarMovieRepositoryProtocol = SimilarMovieRepository.shared
     
     override func viewDidLoad() {
         super.viewDidLoad()
