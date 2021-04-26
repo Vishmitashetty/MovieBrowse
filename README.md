@@ -1,26 +1,27 @@
 # MovieBrowse
 
-Designed Movie Browse App using open source api themoviedb.org
+Movie Browse App using open source api themoviedb.org
 
 ## Architecture
+
 This App is based upon Apple standard MVC Architecture, And code is arranged in following format:
 
-1. HTTP Task: Common network layer to manage http call
+1. HTTP Task: Common network layer to manage http call.
 2. Route File: Common place to manage url route for all api's throught project.
-3. Repository: Using this we can easily maintain DI for Unit test cases
+3. Repository: Using this appraoch we can seemlessly integrate Dependency Injection for Unit test cases.
 4. XcConfig: To manage configuration accross various environment ie: Dev, SIT, UAT etc.
 5. CoreDataStack: Defined managedObject, persistence container and other core data configuration.
 
 
 ## Modules
 
-For each feature we maintained different module and used storyboard and xib's to create UI
+For each feature we maintained different module and used storyboard and xib's to create UI.
 
-1. Home: This module includes movie list
-3. Details: This module includes synoypsis, similar movie, customer review, cast and crew details
-4. Customer Reviews: This module includes customer review screen
-5. Movie Search: This module includes movie search and also support offline recent search
-6. Helper: This module includes Constants, UIKit and Foundation Kit extension
+1. Home: This module includes movie list.
+3. Details: This module includes synoypsis, similar movie, customer review, cast and crew details.
+4. Customer Reviews: This module includes customer review screen.
+5. Movie Search: This module includes movie search and also support offline recent search.
+6. Helper: This module includes Constants, UIKit and Foundation Kit extensions.
 
 ## Unit test coverage (~ 48%)
 
@@ -31,13 +32,15 @@ Modules covered under unit test cases:
 
 ## Third party integration
 
-This project is using cocoapods as dependecy manager
+This project is using cocoapods as package dependecy manager.
 1. Lottie
 2. SDWebImage
 
 # Project Demo
 
-https://user-images.githubusercontent.com/8758234/116006230-dd336380-a627-11eb-913c-d1d464c1b932.mov
+https://user-images.githubusercontent.com/8758234/116030686-c4ec3480-a679-11eb-9a3b-cfbdae581636.mov
+
+
 
 
 
