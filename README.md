@@ -23,12 +23,14 @@ For each feature we maintained different module and used storyboard and xib's to
 5. Movie Search: This module includes movie search and also support offline recent search.
 6. Helper: This module includes Constants, UIKit and Foundation Kit extensions.
 
-## Unit test coverage (~ 48%)
+## Unit test coverage (~ 60%)
 
 Modules covered under unit test cases:
 1. Home
 2. Detail
 3. Customer Review
+4. Movie Search
+5. Environment
 
 ## Third party integration
 
