@@ -64,6 +64,9 @@
 		A1A328A92635DE070090AD86 /* MockMovieCastRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A328A82635DE070090AD86 /* MockMovieCastRepository.swift */; };
 		A1A328AE2635DEAC0090AD86 /* MockSimilarMovieRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A328AD2635DEAC0090AD86 /* MockSimilarMovieRepository.swift */; };
 		A1A328B62635DF8E0090AD86 /* MovieDetailViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A328B52635DF8E0090AD86 /* MovieDetailViewControllerTest.swift */; };
+		A1A4A8E92636CB91007161B4 /* MovieSearch.json in Resources */ = {isa = PBXBuildFile; fileRef = A1A4A8E82636CB91007161B4 /* MovieSearch.json */; };
+		A1A4A8EF2636CBBB007161B4 /* MockMovieSearchRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A4A8EE2636CBBB007161B4 /* MockMovieSearchRepository.swift */; };
+		A1A4A8F32636CC45007161B4 /* MovieSearchTableViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A4A8F22636CC45007161B4 /* MovieSearchTableViewControllerTest.swift */; };
 		A1C8313E2634335C00B650CB /* SimilarMovieCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C8313C2634335C00B650CB /* SimilarMovieCollectionViewCell.swift */; };
 		A1C8313F2634335C00B650CB /* SimilarMovieCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1C8313D2634335C00B650CB /* SimilarMovieCollectionViewCell.xib */; };
 		A1C8314726343ED000B650CB /* MovieCastCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C8314526343ED000B650CB /* MovieCastCollectionViewCell.swift */; };
@@ -169,6 +172,9 @@
 		A1A328A82635DE070090AD86 /* MockMovieCastRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockMovieCastRepository.swift; sourceTree = "<group>"; };
 		A1A328AD2635DEAC0090AD86 /* MockSimilarMovieRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockSimilarMovieRepository.swift; sourceTree = "<group>"; };
 		A1A328B52635DF8E0090AD86 /* MovieDetailViewControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailViewControllerTest.swift; sourceTree = "<group>"; };
+		A1A4A8E82636CB91007161B4 /* MovieSearch.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = MovieSearch.json; sourceTree = "<group>"; };
+		A1A4A8EE2636CBBB007161B4 /* MockMovieSearchRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockMovieSearchRepository.swift; sourceTree = "<group>"; };
+		A1A4A8F22636CC45007161B4 /* MovieSearchTableViewControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieSearchTableViewControllerTest.swift; sourceTree = "<group>"; };
 		A1C8313C2634335C00B650CB /* SimilarMovieCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimilarMovieCollectionViewCell.swift; sourceTree = "<group>"; };
 		A1C8313D2634335C00B650CB /* SimilarMovieCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SimilarMovieCollectionViewCell.xib; sourceTree = "<group>"; };
 		A1C8314526343ED000B650CB /* MovieCastCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCastCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -387,6 +393,7 @@
 		A1A09117262F3142003CCF7E /* MovieAppTests */ = {
 			isa = PBXGroup;
 			children = (
+				A1A4A8E52636CB55007161B4 /* MovieSearch */,
 				A1A328832635D3410090AD86 /* Details */,
 				A1A3286E2635B5470090AD86 /* CustomerReviews */,
 				A1DBCAF82631D44600589379 /* Home */,
@@ -486,6 +493,24 @@
 				A1A3289E2635DBD40090AD86 /* SimilarMovieResponse.json */,
 			);
 			path = JSON;
+			sourceTree = "<group>";
+		};
+		A1A4A8E52636CB55007161B4 /* MovieSearch */ = {
+			isa = PBXGroup;
+			children = (
+				A1A4A8E72636CB7C007161B4 /* MockRepository */,
+				A1A4A8F22636CC45007161B4 /* MovieSearchTableViewControllerTest.swift */,
+			);
+			path = MovieSearch;
+			sourceTree = "<group>";
+		};
+		A1A4A8E72636CB7C007161B4 /* MockRepository */ = {
+			isa = PBXGroup;
+			children = (
+				A1A4A8E82636CB91007161B4 /* MovieSearch.json */,
+				A1A4A8EE2636CBBB007161B4 /* MockMovieSearchRepository.swift */,
+			);
+			path = MockRepository;
 			sourceTree = "<group>";
 		};
 		A1C8313B263432EC00B650CB /* SimilarMovie */ = {
@@ -778,6 +803,7 @@
 			files = (
 				A1A3289A2635D6240090AD86 /* MovieCastResponse.json in Resources */,
 				A1DBCB2F2631E15100589379 /* GetNowPlayingResponse.json in Resources */,
+				A1A4A8E92636CB91007161B4 /* MovieSearch.json in Resources */,
 				A1A328722635B5890090AD86 /* UserReviewResponse.json in Resources */,
 				A1A3289F2635DBD40090AD86 /* SimilarMovieResponse.json in Resources */,
 				A1A328952635D5FC0090AD86 /* SynoypsisResponse.json in Resources */,
@@ -914,9 +940,11 @@
 				A1A328A92635DE070090AD86 /* MockMovieCastRepository.swift in Sources */,
 				A1A3287A2635B6820090AD86 /* MockUserReviewsRepository.swift in Sources */,
 				A1DBCAFA2631D47600589379 /* MovieListViewControllerTest.swift in Sources */,
+				A1A4A8EF2636CBBB007161B4 /* MockMovieSearchRepository.swift in Sources */,
 				A1A328AE2635DEAC0090AD86 /* MockSimilarMovieRepository.swift in Sources */,
 				A1A328B62635DF8E0090AD86 /* MovieDetailViewControllerTest.swift in Sources */,
 				A1DBCB0E2631D51B00589379 /* ProcessDummyJSON.swift in Sources */,
+				A1A4A8F32636CC45007161B4 /* MovieSearchTableViewControllerTest.swift in Sources */,
 				A1DBCB1E2631D5F300589379 /* MockMovieListRepository.swift in Sources */,
 				A1A3287F2635B7560090AD86 /* CustomerReviewViewControllerTest.swift in Sources */,
 			);

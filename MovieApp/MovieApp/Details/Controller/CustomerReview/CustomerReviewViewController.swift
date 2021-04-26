@@ -55,9 +55,9 @@ extension CustomerReviewViewController {
     fileprivate func reloadTableView(_ userReviewList: [UserReview]?) {
         customerReviewDataSource.customerReview.append(contentsOf: userReviewList ?? [])
         let indexPaths = (0 ..< customerReviewDataSource.customerReview.count).map { IndexPath(row: $0, section: 0) }
-        customerReviewTableView.performBatchUpdates ({
-            customerReviewTableView.insertRows(at: indexPaths, with: .automatic)
-        }, completion: nil)
+        customerReviewTableView.beginUpdates()
+        customerReviewTableView.insertRows(at: indexPaths, with: .none)
+        customerReviewTableView.endUpdates()
     }
 }
 

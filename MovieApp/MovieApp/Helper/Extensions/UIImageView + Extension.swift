@@ -42,17 +42,4 @@ extension UIImageView {
         blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         self.addSubview(blurEffectView)
     }
-    
-    func addGradientLayer(color: [CGColor], locations: [Double]) {
-      //  self.layer.sublayers?.forEach { $0.removeFromSuperlayer() }
-        let view = UIView(frame: self.frame)
-        let gradient = CAGradientLayer()
-        gradient.frame = view.frame
-        gradient.colors = color
-        gradient.locations = locations as [NSNumber]
-        view.layer.insertSublayer(gradient, at: 0)
-        self.addSubview(view)
-        self.bringSubviewToFront(view)
-    }
-    
 }

@@ -10,10 +10,9 @@ import CoreData
 
 class MovieSearchTableViewController: UITableViewController {
 
-    var movieSearchRepository: MovieSearchRepository = MovieSearchRepository.shared
+    var movieSearchRepository: MovieSearchRepositoryProtocol = MovieSearchRepository.shared
     var movieResponse: MovieListResponse?
 
-    
     lazy var recentSearchResultsController: NSFetchedResultsController<RecentSearches> = {
         let fetchRequest: NSFetchRequest<RecentSearches> = RecentSearches.fetchRequest()
         fetchRequest.fetchLimit = 5
@@ -141,14 +140,14 @@ extension MovieSearchTableViewController: UISearchResultsUpdating {
 
 
 extension MovieSearchTableViewController {
-    fileprivate func getMovieBySearch(query: String) {
+    func getMovieBySearch(query: String) {
         movieSearchRepository.getMovieBySearch(pageNo: 1, query: query) {[weak self] (result) in
             guard let weakSelf = self else {return}
             
             switch result {
             case .success(let movieList, _):
                 weakSelf.movieResponse = movieList
-                self?.tableView.reloadSections(IndexSet(integer: 0), with: .none)
+                weakSelf.tableView.reloadData()
             case .failure:
                 break
             }
