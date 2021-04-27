@@ -56,10 +56,12 @@ class MovieDetailViewController: UIViewController {
     
     func setNotificationObserver() {
         NotificationCenter.default.addObserver(self, selector: #selector(showCustomerReviewPage(notification:)), name: Notification.Name(Constants.NotificationObserver.customerReviewLoad), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(displaySimilarMovieDetail(notification:)), name: Notification.Name(Constants.NotificationObserver.similarMovie), object: nil)
     }
     
     func removeNotificationObserver() {
         NotificationCenter.default.removeObserver(self, name: Notification.Name(Constants.NotificationObserver.customerReviewLoad), object: nil)
+        NotificationCenter.default.removeObserver(self, name: Notification.Name(Constants.NotificationObserver.similarMovie), object: nil)
     }
 }
 
@@ -167,10 +169,21 @@ extension MovieDetailViewController: UICollectionViewDelegateFlowLayout {
 extension MovieDetailViewController {
     
     @objc func showCustomerReviewPage(notification: Notification) {
-        let storyBoard = UIStoryboard(name: "MovieDetail", bundle: nil)
+        let storyBoard = UIStoryboard(name: Constants.StoryBoardName.movieDetail, bundle: nil)
         guard
-            let vc = storyBoard.instantiateViewController(identifier: "CustomerReviewViewController") as? CustomerReviewViewController else {return}
+            let vc = storyBoard.instantiateViewController(identifier: Constants.StoryBoardIdentifier.customerReviewViewController) as? CustomerReviewViewController else {return}
         vc.movieId = movieId
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @objc func displaySimilarMovieDetail(notification: Notification) {
+        let storyBoard = UIStoryboard(name: Constants.StoryBoardName.movieDetail, bundle: nil)
+        guard
+            let vc = storyBoard.instantiateViewController(identifier: Constants.StoryBoardIdentifier.movieDetailViewController) as? MovieDetailViewController,
+            let id = notification.userInfo?["id"] as? Int,
+            let name = notification.userInfo?["name"] as? String else {return}
+        vc.movieId = id
+        vc.movieTitle = name
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }
