@@ -11,6 +11,7 @@ This App is based upon Apple standard MVC Architecture, And code is arranged in 
 3. Repository: Using this appraoch we can seemlessly integrate Dependency Injection for Unit test cases.
 4. XcConfig: To manage configuration accross various environment ie: Dev, SIT, UAT etc.
 5. CoreDataStack: Defined managedObject, persistence container and other core data configuration.
+6. Logging: Implemented os logs in network and offline db layer.
 
 
 ## Modules
@@ -22,6 +23,7 @@ For each feature we maintained different module and used storyboard and xib's to
 4. Customer Reviews: This module includes customer review screen.
 5. Movie Search: This module includes movie search and also support offline recent search.
 6. Helper: This module includes Constants, UIKit and Foundation Kit extensions.
+7. Search Algorithm: Implemented wrapper logic for search algorithm based on Boyer moore string matching algorithm to get relevant search result.
 
 ## Unit test coverage (~ 60%)
 
