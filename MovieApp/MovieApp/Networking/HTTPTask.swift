@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import os.log
+
 // Add HTTPTaskProtocol to HTTPTask. Any new addition should be added to protocol so test cases can work as expected
 protocol HTTPTaskProtocol {
         func GET<T: Codable>(api: URLComponentsRepresentable, config: URLSessionConfiguration?, completionHandler: @escaping (Result<T, TaskError>) -> Void )
@@ -114,20 +114,20 @@ class HTTPTask: NSObject, HTTPTaskProtocol {
             urlRequest.httpBody = data
         }
         
-        Logger.apiDebugging(url: url.absoluteString, method: method)
+        LoggerRepository.shared.apiDebugging(url: url.absoluteString, method: method)
         let session = URLSession.init(configuration: .default, delegate: nil, delegateQueue: nil)
         let task = session.dataTask(with: urlRequest) { (data, response, error) in
 
             guard let statusCode = (response as? HTTPURLResponse)?.statusCode else {return}
 
             if error != nil {
-                Logger.apiResponseFailure(url: url.absoluteString, method: method, message: error?.localizedDescription)
+                LoggerRepository.shared.apiResponseFailure(url: url.absoluteString, method: method, message: error?.localizedDescription)
                 completionHandler(.failure(.other, statusCode))
                 return
             }
 
             guard let jsonData = data, !jsonData.isEmpty else {
-                Logger.apiResponseFailure(url: url.absoluteString, method: method, message: "JSON is empty")
+                LoggerRepository.shared.apiResponseFailure(url: url.absoluteString, method: method, message: "JSON is empty")
                 completionHandler(.failure(.noData, statusCode))
                 return
             }
@@ -135,11 +135,11 @@ class HTTPTask: NSObject, HTTPTaskProtocol {
             let decoder = JSONDecoder()
             decoder.keyDecodingStrategy = .convertFromSnakeCase
             guard let jsonObject = try? decoder.decode(T.self, from: jsonData) else {
-                Logger.apiResponseFailure(url: url.absoluteString, method: method, message: "JSON error")
+                LoggerRepository.shared.apiResponseFailure(url: url.absoluteString, method: method, message: "JSON error")
                 completionHandler(.failure(.jsonError, statusCode))
                 return
             }
-            Logger.apiResponseSuccess(url: url.absoluteString, method: method, message: "API Executed successfully")
+            LoggerRepository.shared.apiResponseSuccess(url: url.absoluteString, method: method, message: "API Executed successfully")
             completionHandler(.success(jsonObject, statusCode))
         }
         task.resume()

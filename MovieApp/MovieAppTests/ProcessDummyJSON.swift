@@ -23,7 +23,6 @@ class ProcessDummyJSON {
                     let jsonObject = try decoder.decode(T.self, from: jsonData)
                     completionHandler(.success(jsonObject, 200))
                 } catch {
-                    print(error.localizedDescription)
                     completionHandler(.failure(.jsonError, 500))
                     return
                 }

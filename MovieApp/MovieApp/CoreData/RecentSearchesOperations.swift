@@ -7,7 +7,6 @@
 
 import Foundation
 import CoreData
-import os.log
 
 class RecentSearchesOperations {
     static let shared = RecentSearchesOperations()
@@ -15,7 +14,7 @@ class RecentSearchesOperations {
     
     //Insert recent search in coredata unique identifer is movie id
     func insertRecentSearches(movie: Movie) {
-        Logger.dbDebugging(entityName: RecentSearches.entityName, operationName: Logger.DBOperations.insert.rawValue)
+        LoggerRepository.shared.dbDebugging(entityName: RecentSearches.entityName, operationName: LoggerRepository.DBOperations.insert.rawValue)
         guard
             let movieId = movie.id,
             let movieName = movie.title else {
@@ -35,13 +34,13 @@ class RecentSearchesOperations {
                 self.managedObjectContext.performAndWait {
                     do {
                         try self.managedObjectContext.save()
-                        Logger.dbOperationSuccess(entityName: RecentSearches.entityName, operationName: Logger.DBOperations.insert.rawValue)
+                        LoggerRepository.shared.dbOperationSuccess(entityName: RecentSearches.entityName, operationName: LoggerRepository.DBOperations.insert.rawValue)
                     } catch {
-                        Logger.dbOperationFailure(entityName: RecentSearches.entityName, operationName: Logger.DBOperations.insert.rawValue, message: error.localizedDescription)
+                        LoggerRepository.shared.dbOperationFailure(entityName: RecentSearches.entityName, operationName: LoggerRepository.DBOperations.insert.rawValue, message: error.localizedDescription)
                     }
                 }
             } catch {
-                Logger.dbOperationFailure(entityName: RecentSearches.entityName, operationName: Logger.DBOperations.insert.rawValue, message: error.localizedDescription)
+                LoggerRepository.shared.dbOperationFailure(entityName: RecentSearches.entityName, operationName: LoggerRepository.DBOperations.insert.rawValue, message: error.localizedDescription)
             }
         }
     }

@@ -21,7 +21,7 @@ class CoreDataStack {
         let container = NSPersistentContainer(name: self.modelName)
         container.loadPersistentStores { (storeDescription, error) in
             if let error = error as NSError? {
-                debugPrint("error: \(error.localizedDescription)")
+                LoggerRepository.shared.dbOperationFailure(entityName: self.modelName, operationName: LoggerRepository.DBOperations.dbIntialization.rawValue, message: error.localizedDescription)
             }
         }
         return container
@@ -38,7 +38,7 @@ class CoreDataStack {
         do {
             try managedContext.save()
         } catch let error as NSError {
-            debugPrint(error)
+            LoggerRepository.shared.dbOperationFailure(entityName: self.modelName, operationName: LoggerRepository.DBOperations.dbContextSave.rawValue, message: error.localizedDescription)
         }
     }
 }
