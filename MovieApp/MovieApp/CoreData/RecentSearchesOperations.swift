@@ -12,6 +12,7 @@ class RecentSearchesOperations {
     static let shared = RecentSearchesOperations()
     let managedObjectContext = CoreDataStack.shared.managedContext
     
+    //Insert recent search in coredata unique identifer is movie id
     func insertRecentSearches(movie: Movie) {
         guard
             let movieId = movie.id,
