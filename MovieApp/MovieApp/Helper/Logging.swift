@@ -11,17 +11,39 @@ import Foundation
 extension Logger {
     private static var subsystem = Bundle.main.bundleIdentifier!
     
-    static let loggerCateogry = Logger(subsystem: subsystem, category: "apiResponse")
+    static let networkCategory = Logger(subsystem: subsystem, category: "apiResponse")
+    static let dbCategory = Logger(subsystem: subsystem, category: "dbOperations")
     
+    //MARK: - Network leyer logging
     static func apiResponseSuccess(url: String, method: String, message: String?) {
-        Logger.loggerCateogry.info("\(method): API response success for \(url) with \(message ?? "")")
+        Logger.networkCategory.info("\(method): API response success for \(url) with \(message ?? "")")
     }
     
     static func apiResponseFailure(url: String, method: String, message: String?) {
-        Logger.loggerCateogry.error("\(method): API response failed for \(url) with \(message ?? "")")
+        Logger.networkCategory.error("\(method): API response failed for \(url) with \(message ?? "")")
     }
     
     static func apiDebugging(url: String, method: String) {
-        Logger.loggerCateogry.debug("\(method): API debugging for \(url)")
+        Logger.networkCategory.debug("\(method): API debugging for \(url)")
+    }
+    
+    //MARK: - Coredata logging
+    static func dbOperationSuccess(entityName: String, operationName: String) {
+        Logger.dbCategory.info("DB \(operationName) success for entity name \(entityName)")
+    }
+    
+    static func dbOperationFailure(entityName: String, operationName: String, message: String?) {
+        Logger.dbCategory.error("DB \(operationName) failure for entity name \(entityName) with \(message ?? "")")
+    }
+    
+    static func dbDebugging(entityName: String, operationName: String) {
+        Logger.dbCategory.debug("DB \(operationName) debugging for entity name \(entityName)")
+    }
+    
+    enum DBOperations: String {
+        case insert
+        case delete
+        case fetch
+        case update
     }
 }

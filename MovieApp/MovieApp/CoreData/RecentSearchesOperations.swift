@@ -7,6 +7,7 @@
 
 import Foundation
 import CoreData
+import os.log
 
 class RecentSearchesOperations {
     static let shared = RecentSearchesOperations()
@@ -14,6 +15,7 @@ class RecentSearchesOperations {
     
     //Insert recent search in coredata unique identifer is movie id
     func insertRecentSearches(movie: Movie) {
+        Logger.dbDebugging(entityName: RecentSearches.entityName, operationName: Logger.DBOperations.insert.rawValue)
         guard
             let movieId = movie.id,
             let movieName = movie.title else {
@@ -33,12 +35,13 @@ class RecentSearchesOperations {
                 self.managedObjectContext.performAndWait {
                     do {
                         try self.managedObjectContext.save()
+                        Logger.dbOperationSuccess(entityName: RecentSearches.entityName, operationName: Logger.DBOperations.insert.rawValue)
                     } catch {
-                        debugPrint(error.localizedDescription)
+                        Logger.dbOperationFailure(entityName: RecentSearches.entityName, operationName: Logger.DBOperations.insert.rawValue, message: error.localizedDescription)
                     }
                 }
             } catch {
-                debugPrint(error.localizedDescription)
+                Logger.dbOperationFailure(entityName: RecentSearches.entityName, operationName: Logger.DBOperations.insert.rawValue, message: error.localizedDescription)
             }
         }
     }
