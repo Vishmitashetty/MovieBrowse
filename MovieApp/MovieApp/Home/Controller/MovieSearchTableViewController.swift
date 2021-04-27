@@ -12,7 +12,8 @@ class MovieSearchTableViewController: UITableViewController {
 
     var movieSearchRepository: MovieSearchRepositoryProtocol = MovieSearchRepository.shared
     var movieResponse: MovieListResponse?
-
+    var movieList: [Movie]?
+    
     lazy var recentSearchResultsController: NSFetchedResultsController<RecentSearches> = {
         let fetchRequest: NSFetchRequest<RecentSearches> = RecentSearches.fetchRequest()
         fetchRequest.fetchLimit = 5
@@ -67,7 +68,7 @@ class MovieSearchTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0:
-            return movieResponse?.results?.count ?? 0
+            return movieList?.count ?? 0
         case 1:
             return recentSearchResultsController.fetchedObjects?.count ?? 0
         default:
@@ -81,7 +82,7 @@ class MovieSearchTableViewController: UITableViewController {
         case 0:
            guard
             let cell = tableView.dequeueReusableCell(withIdentifier: MovieSearchTableViewCell.identifier, for: indexPath) as? MovieSearchTableViewCell else {return UITableViewCell()}
-            cell.movieSearchLabel.text = movieResponse?.results?[indexPath.row].title ?? ""
+            cell.movieSearchLabel.text = movieList?[indexPath.row].title ?? ""
             return cell
         case 1:
             guard
@@ -112,7 +113,7 @@ class MovieSearchTableViewController: UITableViewController {
         
         switch indexPath.section {
         case 0:
-            guard let movie = movieResponse?.results?[indexPath.row], movie.id != 0 else {return}
+            guard let movie = movieList?[indexPath.row], movie.id != 0 else {return}
             RecentSearchesOperations.shared.insertRecentSearches(movie: movie)
             vc.movieId = Int(movie.id ?? 0)
             vc.movieTitle = movie.title
@@ -147,6 +148,8 @@ extension MovieSearchTableViewController {
             switch result {
             case .success(let movieList, _):
                 weakSelf.movieResponse = movieList
+                //Apply filter
+                weakSelf.movieList = movieList.filterMovie(pattern: query)
                 weakSelf.tableView.reloadData()
             case .failure:
                 break

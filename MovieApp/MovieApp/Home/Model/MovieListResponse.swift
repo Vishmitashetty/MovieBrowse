@@ -23,3 +23,19 @@ struct Movie: Codable {
     let posterPath: String?
     let releaseDate: String?
 }
+
+extension MovieListResponse {
+    
+    func filterMovie(pattern: String) -> [Movie] {
+        var movieList: [Movie] = []
+        guard
+            let results = results  else {return [] }
+        results.forEach({ (movie) in
+            guard let movieTitle = movie.title else {return}
+            if movieTitle.searchString(patternValue: pattern) {
+                movieList.append(movie)
+            }
+        })
+        return movieList
+    }
+}

@@ -68,6 +68,7 @@
 		A1A4A8EF2636CBBB007161B4 /* MockMovieSearchRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A4A8EE2636CBBB007161B4 /* MockMovieSearchRepository.swift */; };
 		A1A4A8F32636CC45007161B4 /* MovieSearchTableViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A4A8F22636CC45007161B4 /* MovieSearchTableViewControllerTest.swift */; };
 		A1A4A8FF2636FF3E007161B4 /* EnvironmentTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A4A8FE2636FF3E007161B4 /* EnvironmentTest.swift */; };
+		A1A4A906263739E5007161B4 /* SearchAlgorithmTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A4A905263739E5007161B4 /* SearchAlgorithmTest.swift */; };
 		A1C8313E2634335C00B650CB /* SimilarMovieCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C8313C2634335C00B650CB /* SimilarMovieCollectionViewCell.swift */; };
 		A1C8313F2634335C00B650CB /* SimilarMovieCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1C8313D2634335C00B650CB /* SimilarMovieCollectionViewCell.xib */; };
 		A1C8314726343ED000B650CB /* MovieCastCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C8314526343ED000B650CB /* MovieCastCollectionViewCell.swift */; };
@@ -177,6 +178,7 @@
 		A1A4A8EE2636CBBB007161B4 /* MockMovieSearchRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockMovieSearchRepository.swift; sourceTree = "<group>"; };
 		A1A4A8F22636CC45007161B4 /* MovieSearchTableViewControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieSearchTableViewControllerTest.swift; sourceTree = "<group>"; };
 		A1A4A8FE2636FF3E007161B4 /* EnvironmentTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentTest.swift; sourceTree = "<group>"; };
+		A1A4A905263739E5007161B4 /* SearchAlgorithmTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchAlgorithmTest.swift; sourceTree = "<group>"; };
 		A1C8313C2634335C00B650CB /* SimilarMovieCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimilarMovieCollectionViewCell.swift; sourceTree = "<group>"; };
 		A1C8313D2634335C00B650CB /* SimilarMovieCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SimilarMovieCollectionViewCell.xib; sourceTree = "<group>"; };
 		A1C8314526343ED000B650CB /* MovieCastCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCastCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -395,6 +397,7 @@
 		A1A09117262F3142003CCF7E /* MovieAppTests */ = {
 			isa = PBXGroup;
 			children = (
+				A1A4A904263739C5007161B4 /* SearchAlgorithm */,
 				A1A4A8FD2636FF2A007161B4 /* Environment */,
 				A1A4A8E52636CB55007161B4 /* MovieSearch */,
 				A1A328832635D3410090AD86 /* Details */,
@@ -522,6 +525,14 @@
 				A1A4A8FE2636FF3E007161B4 /* EnvironmentTest.swift */,
 			);
 			path = Environment;
+			sourceTree = "<group>";
+		};
+		A1A4A904263739C5007161B4 /* SearchAlgorithm */ = {
+			isa = PBXGroup;
+			children = (
+				A1A4A905263739E5007161B4 /* SearchAlgorithmTest.swift */,
+			);
+			path = SearchAlgorithm;
 			sourceTree = "<group>";
 		};
 		A1C8313B263432EC00B650CB /* SimilarMovie */ = {
@@ -958,6 +969,7 @@
 				A1DBCB0E2631D51B00589379 /* ProcessDummyJSON.swift in Sources */,
 				A1A4A8F32636CC45007161B4 /* MovieSearchTableViewControllerTest.swift in Sources */,
 				A1DBCB1E2631D5F300589379 /* MockMovieListRepository.swift in Sources */,
+				A1A4A906263739E5007161B4 /* SearchAlgorithmTest.swift in Sources */,
 				A1A3287F2635B7560090AD86 /* CustomerReviewViewControllerTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

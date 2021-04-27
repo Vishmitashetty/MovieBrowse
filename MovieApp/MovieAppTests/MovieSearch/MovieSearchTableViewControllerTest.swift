@@ -18,7 +18,7 @@ class MovieSearchTableViewControllerTest: XCTestCase {
         let storyBoard = UIStoryboard(name: "MovieList", bundle: nil)
         controller = (storyBoard.instantiateViewController(withIdentifier: "MovieSearchTableViewController") as! MovieSearchTableViewController)
         controller.movieSearchRepository = mockMovieSearchRepo
-        controller.getMovieBySearch(query: "a")
+        controller.getMovieBySearch(query: "b")
         controller.loadViewIfNeeded()
         movieList = mockMovieSearchRepo.getMovieSearch()
     }
@@ -34,7 +34,7 @@ class MovieSearchTableViewControllerTest: XCTestCase {
         //Arrange
         let noOfRows = controller.tableView(controller.tableView, numberOfRowsInSection: 0)
         //Assert
-        XCTAssertEqual(noOfRows, 20)
+        XCTAssertEqual(noOfRows, 17)
     }
     
     func test_movieSearchLabelAssignment_InMovieSearchTableViewCell() {
