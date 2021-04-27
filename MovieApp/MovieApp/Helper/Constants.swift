@@ -20,6 +20,16 @@ struct Constants {
     struct NotificationObserver {
         static let customerReviewLoad = "customerReviewLoad"
     }
+    
+    struct StoryBoardName {
+        static let movieList = "MovieList"
+        static let movieDetail = "MovieDetail"
+    }
+    
+    struct StoryBoardIdentifier {
+        static let movieList = "movieList"
+        static let movieDetailViewController = "movieDetailViewController"
+    }
 }
 
 

@@ -9,7 +9,7 @@ import UIKit
 import CoreData
 
 class MovieSearchTableViewController: UITableViewController {
-
+    //Repository defination
     var movieSearchRepository: MovieSearchRepositoryProtocol = MovieSearchRepository.shared
     var movieResponse: MovieListResponse?
     var movieList: [Movie]?
@@ -30,6 +30,7 @@ class MovieSearchTableViewController: UITableViewController {
         fetchRecentMovie()
     }
     
+    //Recent movie fetch from core data
     fileprivate func fetchRecentMovie() {
         do {
             try recentSearchResultsController.performFetch()
@@ -39,6 +40,7 @@ class MovieSearchTableViewController: UITableViewController {
         }
     }
     
+    //Setup search input field
     fileprivate func setupSearch() {
         let search = UISearchController(searchResultsController: nil)
         search.hidesNavigationBarDuringPresentation = true
@@ -47,7 +49,6 @@ class MovieSearchTableViewController: UITableViewController {
         search.searchResultsUpdater = self
         search.obscuresBackgroundDuringPresentation = false
         search.searchBar.placeholder = "Type something here to search"
-        //navigationItem.titleView = search.searchBar
         navigationItem.searchController = search
     }
     
@@ -58,13 +59,15 @@ class MovieSearchTableViewController: UITableViewController {
         self.navigationController?.navigationBar.isTranslucent = false
         self.navigationController?.view.backgroundColor = .white
     }
+}
 
-    // MARK: - Table view data source
-
+//MARK: - UITableViewDataSource
+extension MovieSearchTableViewController {
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0:
@@ -74,14 +77,13 @@ class MovieSearchTableViewController: UITableViewController {
         default:
             return 0
         }
-       
     }
-
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.section {
         case 0:
-           guard
-            let cell = tableView.dequeueReusableCell(withIdentifier: MovieSearchTableViewCell.identifier, for: indexPath) as? MovieSearchTableViewCell else {return UITableViewCell()}
+            guard
+                let cell = tableView.dequeueReusableCell(withIdentifier: MovieSearchTableViewCell.identifier, for: indexPath) as? MovieSearchTableViewCell else {return UITableViewCell()}
             cell.movieSearchLabel.text = movieList?[indexPath.row].title ?? ""
             return cell
         case 1:
@@ -95,7 +97,7 @@ class MovieSearchTableViewController: UITableViewController {
         }
         
     }
-
+    
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch section {
         case 1:
@@ -104,12 +106,15 @@ class MovieSearchTableViewController: UITableViewController {
             return ""
         }
     }
-    
+}
+
+//MARK: - UITableViewDelegate
+extension MovieSearchTableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //Push movie detail view
-        let storyBoard = UIStoryboard(name: "MovieDetail", bundle: nil)
+        let storyBoard = UIStoryboard(name: Constants.StoryBoardName.movieDetail, bundle: nil)
         guard
-            let vc = storyBoard.instantiateViewController(identifier: "movieDetailViewController") as? MovieDetailViewController else {return}
+            let vc = storyBoard.instantiateViewController(identifier: Constants.StoryBoardIdentifier.movieDetailViewController) as? MovieDetailViewController else {return}
         
         switch indexPath.section {
         case 0:

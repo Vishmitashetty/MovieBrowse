@@ -10,6 +10,7 @@ import UIKit
 extension UIViewController {
     private var activityIndicatorTag: Int { return 1000009 }
     
+    //Set custom navigation
     func setCustomNavigation(isLeftBarButton: Bool = true) {
         guard
             let navigationBar = self.navigationController?.navigationBar  else { return }
@@ -52,6 +53,7 @@ extension UIViewController {
         view.addSubview(activityIndicator)
     }
     
+    //Remove acitvity indicator
     func stopActivityIndicator(onMainThread main: Bool = true) {
         if main {
              DispatchQueue.main.async {

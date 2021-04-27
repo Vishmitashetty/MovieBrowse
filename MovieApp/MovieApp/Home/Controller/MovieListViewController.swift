@@ -11,10 +11,12 @@ import Lottie
 class MovieListViewController: UIViewController {
 
     @IBOutlet weak var movieCollectionView: UICollectionView!
-    
+    //Data source for MovieListViewController
     var movieCollectionDataSource = MovieListCollectionDataSource()
+    //Repository defination
     var movieListRepository: MovieListRepositoryProtocol = MovieListRepository.shared
     var movieSearchRepository: MovieSearchRepository = MovieSearchRepository.shared
+    
     var pageNo: Int = 1
     var movieList: MovieListResponse?
     private var animationView: AnimationView?
@@ -42,6 +44,7 @@ class MovieListViewController: UIViewController {
 extension MovieListViewController {
     
     fileprivate func setLoader() {
+        //Add lottie animation loader
         animationView = .init(name: "movieLoader")
         animationView!.frame = view.bounds
         animationView!.contentMode = .scaleAspectFit
@@ -59,9 +62,11 @@ extension MovieListViewController {
     }
     
     fileprivate func register() {
+        //Register collection view cell xib
         movieCollectionView.register(UINib(nibName: "\(MovieListCollectionViewCell.self)", bundle: Bundle.main), forCellWithReuseIdentifier: MovieListCollectionViewCell.identifier)
     }
     
+    //Get movie list based upon page no
     func getNowPlaying(pageNo: Int) {
         self.startActivityIndicator()
         self.pageNo = pageNo
@@ -81,6 +86,7 @@ extension MovieListViewController {
         }
     }
     
+    //Load collection view based on new results
     fileprivate func loadMovieData(movieList: MovieListResponse) {
         guard
             let movieArray = movieList.results else {
@@ -103,8 +109,6 @@ extension MovieListViewController: UICollectionViewDelegateFlowLayout {
         return CGSize(width: floor(width/2.0), height: 332)
     }
     
-    
-    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
             return UIEdgeInsets(top: 0, left: 24, bottom: 0, right: 24)
     }
@@ -113,10 +117,11 @@ extension MovieListViewController: UICollectionViewDelegateFlowLayout {
 //MARK: - UICollectionViewDelegate
 extension MovieListViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        //Redirect user to movie detail view
         let movie = movieCollectionDataSource.movieList[indexPath.row]
-        let storyBoard = UIStoryboard(name: "MovieDetail", bundle: nil)
+        let storyBoard = UIStoryboard(name: Constants.StoryBoardName.movieDetail, bundle: nil)
         guard
-            let vc = storyBoard.instantiateViewController(identifier: "movieDetailViewController") as? MovieDetailViewController else {return}
+            let vc = storyBoard.instantiateViewController(identifier: Constants.StoryBoardIdentifier.movieDetailViewController) as? MovieDetailViewController else {return}
         vc.movieId = Int(movie.id ?? 0)
         vc.movieTitle = movie.title
         self.navigationController?.pushViewController(vc, animated: true)

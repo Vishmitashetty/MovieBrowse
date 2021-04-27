@@ -25,7 +25,7 @@ struct Movie: Codable {
 }
 
 extension MovieListResponse {
-    
+    //Filter movie based on pattern match 
     func filterMovie(pattern: String) -> [Movie] {
         var movieList: [Movie] = []
         guard

@@ -17,6 +17,7 @@ class MovieCastCollectionViewCell: UICollectionViewCell {
         // Initialization code
     }
     
+    //Cell Assignment
     func configureCell(_ cast: Cast?) {
         castNameLabel.text = "\(cast?.name ?? "") \n(\(cast?.character ?? ""))"
         if let profilePath = cast?.profilePath {

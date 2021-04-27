@@ -8,6 +8,8 @@
 import Foundation
 import UIKit
 
+//MARK: - UICollectionViewDataSource
+
 class MovieListCollectionDataSource: NSObject, UICollectionViewDataSource {
     var movieList: [Movie] = []
     

@@ -20,6 +20,7 @@ class CustomerReviewTableViewCell: UITableViewCell {
         // Initialization code
     }
 
+    //Cell Assignment
     func configureCell(_ userReview: UserReview?) {
         authorNameLabel.text = userReview?.author ?? ""
         ratingStarLabel.text = String(userReview?.authorDetails?.rating ?? 0.0)
@@ -34,5 +35,10 @@ class CustomerReviewTableViewCell: UITableViewCell {
             avtarImageView.image = UIImage(named: "neutralProfileIcon")
         }
         avtarImageView.layer.cornerRadius = avtarImageView.frame.height/2
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        avtarImageView.image = nil
     }
 }

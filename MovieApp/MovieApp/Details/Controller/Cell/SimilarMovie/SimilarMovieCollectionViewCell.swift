@@ -17,6 +17,7 @@ class SimilarMovieCollectionViewCell: UICollectionViewCell {
         // Initialization code
     }
     
+    //Assign cell
     func configureCell(_ similarMovie: SimilarMovie?) {
         movieTitleLabel.text = similarMovie?.originalTitle ?? ""
         if let posterPath = similarMovie?.posterPath {

@@ -21,6 +21,7 @@ class SynoypsisCollectionViewCell: UICollectionViewCell {
         // Initialization code
     }
     
+    //Cell Assignment
     func configureCell(_ synoypsisResponse: SynoypsisResponse?) {
         movieTitleLabel.text = synoypsisResponse?.originalTitle ?? ""
         releaseDateLabel.text = "\(synoypsisResponse?.status ?? ""):  \(synoypsisResponse?.releaseDate ?? "")"

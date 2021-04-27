@@ -20,6 +20,7 @@ class MovieListCollectionViewCell: UICollectionViewCell {
         // Initialization code
     }
     
+    //Assign data
     func configureCell(_ movie: Movie?) {
         movieTitle.text = movie?.title ?? ""
         movieReleaseDate.text = movie?.releaseDate ?? ""
@@ -32,6 +33,11 @@ class MovieListCollectionViewCell: UICollectionViewCell {
             posterImage.image = UIImage(named: "neutralProfileIcon")
         }
         posterImage.setCornerRadius()
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        posterImage.image = nil
     }
 
 }

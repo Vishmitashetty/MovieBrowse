@@ -7,9 +7,8 @@
 
 import UIKit
 
-
+//MARK: - UITableViewDataSource
 class CustomerReviewDataSource: NSObject, UITableViewDataSource {
-  
     var customerReview: [UserReview] = []
     
     func numberOfSections(in tableView: UITableView) -> Int {

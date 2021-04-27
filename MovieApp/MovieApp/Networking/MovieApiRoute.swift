@@ -7,6 +7,8 @@
 
 import Foundation
 
+//Build url based on configuration
+
 protocol URLComponentsRepresentable {
     var scheme: String { get }
     var host: String { get }

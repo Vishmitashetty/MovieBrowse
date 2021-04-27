@@ -16,7 +16,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
-        guard let _ = (scene as? UIWindowScene) else { return }
+        
+        //Launch Movie list controller on launch
         /// 1. Capture the scene
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
@@ -24,7 +25,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let window = UIWindow(windowScene: windowScene)
         
         /// 3. Create a view hierarchy programmatically
-        let viewController = UIStoryboard(name: "MovieList", bundle: nil).instantiateViewController(withIdentifier: "movieList")
+        let viewController = UIStoryboard(name: Constants.StoryBoardName.movieList, bundle: nil).instantiateViewController(withIdentifier: Constants.StoryBoardIdentifier.movieList)
         let navigation = UINavigationController(rootViewController: viewController)
         
         /// 4. Set the root view controller of the window with your view controller

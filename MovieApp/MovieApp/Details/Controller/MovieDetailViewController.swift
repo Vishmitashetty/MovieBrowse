@@ -10,10 +10,11 @@ import UIKit
 class MovieDetailViewController: UIViewController {
 
     @IBOutlet weak var movieDetailCollectionView: UICollectionView!
-    
+    //Collection view data source
     var movieDetailDataSource = MovieDetailDataSource()
     var movieId: Int?
     var movieTitle: String?
+    //Repository defination
     var synoypsisRepository: GetSynoypsisRepositoryProtocol = GetSynoypsisRepository.shared
     var movieCastRepository: MovieCastRepositoryProtocol = MovieCastRepository.shared
     var similarMovieRepository: SimilarMovieRepositoryProtocol = SimilarMovieRepository.shared

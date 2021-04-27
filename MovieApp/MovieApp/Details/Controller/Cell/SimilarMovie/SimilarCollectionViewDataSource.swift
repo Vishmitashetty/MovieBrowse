@@ -7,6 +7,7 @@
 
 import UIKit
 
+//MARK: - UICollectionViewDataSource
 class SimilarCollectionViewDataSource: NSObject, UICollectionViewDataSource {
     var similarMovies: [SimilarMovie] = []
     

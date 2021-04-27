@@ -10,9 +10,11 @@ import UIKit
 class CustomerReviewViewController: UIViewController {
 
     @IBOutlet weak var customerReviewTableView: UITableView!
-    
+    //Table view data source
     var customerReviewDataSource = CustomerReviewDataSource()
+    //Repository assignment
     var userReviewsRepository: UserReviewsRepositoryProtocol = UserReviewsRepository.shared
+    
     var movieId: Int?
     var userReviewResponse: UserReviewsResponse?
     var page: Int = 1

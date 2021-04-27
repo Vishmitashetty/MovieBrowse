@@ -10,9 +10,11 @@ import UIKit
 class SimilarMovieCollectionView: UICollectionViewCell {
 
     @IBOutlet weak var similarCollectionView: UICollectionView!
-    
+    //Collection view data source
     var similarMovieCollectionDataSource = SimilarCollectionViewDataSource()
+    //Repository defination
     var similarMovieRepository: SimilarMovieRepositoryProtocol = SimilarMovieRepository.shared
+    
     var page: Int = 1
     var movieId: Int?
     var similarMovieResponse: SimilarMovieResponse?
@@ -22,7 +24,6 @@ class SimilarMovieCollectionView: UICollectionViewCell {
         similarCollectionView.dataSource = similarMovieCollectionDataSource
         similarCollectionView.delegate = self
         register()
-
     }
     
     func configureCell(_ similarMovie: SimilarMovieResponse?) {
@@ -54,7 +55,6 @@ class SimilarMovieCollectionView: UICollectionViewCell {
             }
         }
     }
-
 }
 
 //MARK: - UICollectionViewDelegate
@@ -76,7 +76,6 @@ extension SimilarMovieCollectionView: UICollectionViewDelegateFlowLayout {
         
         let itemSize = similarMovieCollectionDataSource.similarMovies.count == 0 ? CGSize(width: 0, height: 0) : CGSize(width: 160, height: 292)
         return itemSize
-        
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {

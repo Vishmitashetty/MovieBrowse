@@ -16,6 +16,7 @@ extension UIImageView {
         self.layer.masksToBounds = true
     }
     
+    //Load image from url along
     func loadImage(with urlString: String?, placeholder: UIImage? = nil) {
         let urlValue = urlString?.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
         guard let urlString = urlValue, let url = URL(string: urlString) else { return }
@@ -35,6 +36,7 @@ extension UIImageView {
 
     }
     
+    //Adding blur effect on top of image view
     func addBlurEffect() {
         let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.dark)
         let blurEffectView = UIVisualEffectView(effect: blurEffect)

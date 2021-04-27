@@ -7,6 +7,7 @@
 
 import UIKit
 
+//MARK: - UICollectionViewDataSource
 class MovieDetailDataSource: NSObject, UICollectionViewDataSource {
     
     var synoypsisResponse: SynoypsisResponse?
@@ -15,6 +16,12 @@ class MovieDetailDataSource: NSObject, UICollectionViewDataSource {
     var movieId: Int?
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
+        /*
+         Section 0: Synoypsis
+         Section 1: Similar movie
+         Section 2: Customer Review
+         Section 3: Cast and crew
+         */
         return 4
     }
 
